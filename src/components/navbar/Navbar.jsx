@@ -8,7 +8,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       {/* Logo/Brand */}
       <Link className="navbar-brand" to="/">
-        <h2>FindMyAi</h2>
+        <h2>FindMyAI</h2>
       </Link>
 
       {/* Toggle Button for Mobile */}
@@ -45,42 +45,10 @@ function Navbar() {
               Trending
             </Link>
           </li>
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Resources
-            </a>
-            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
-                <Link className="dropdown-item" to="/blog">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/tutorials">
-                  Tutorials
-                </Link>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/submit-tool">
-                  Submit a Tool
-                </Link>
-              </li>
-            </ul>
-          </li>
         </ul>
 
         {/* Search Bar */}
-        <form className="d-flex mx-auto">
+        <form className="d-flex mx-auto searchbar-container">
           <div className="input-group">
             <input
               className="form-control"
@@ -95,56 +63,6 @@ function Navbar() {
         </form>
 
         {/* User Authentication */}
-        <div className="ms-3 d-flex align-items-center">
-          <div className="dropdown">
-            <a
-              href="#"
-              className="d-flex align-items-center text-decoration-none dropdown-toggle"
-              id="userDropdown"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i className="bi bi-person-circle fs-4 me-2"></i>
-              <span className="d-none d-sm-inline">Account</span>
-            </a>
-            <ul
-              className="dropdown-menu dropdown-menu-end"
-              aria-labelledby="userDropdown"
-            >
-              <li>
-                <Link className="dropdown-item" to="/login">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/register">
-                  Register
-                </Link>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/profile">
-                  Profile
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/saved-tools">
-                  Saved Tools
-                </Link>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Logout
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </nav>
   );

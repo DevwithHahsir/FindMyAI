@@ -1,0 +1,172 @@
+.herosection-main-container {
+     background-color: #100E1B;
+     height: 100vh;
+}
+
+/* Hero header styles */
+
+.discover-tools {
+     display: flex;
+     justify-content: center;
+}
+
+.discover-tools__btn {
+     background-color: #09090B !important;
+     border-radius: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-top: 3rem;
+     color: #A8A99E !important;
+     height: 3.2vw;
+     width: 27vw;
+     -webkit-border-radius: 30px;
+     -moz-border-radius: 30px;
+     -ms-border-radius: 30px;
+     -o-border-radius: 30px;
+     filter: drop-shadow(5px 5px 10px #11112C);
+     -webkit-filter: drop-shadow(5px 5px 10px #11112C);
+     border: 1px solid #22202A;
+}
+
+
+.discover-tools__icon {
+     font-size: 3vw;
+     color: #8D62B8 !important;
+}
+
+
+.discover-tools__text {
+     font-size: 1.2vw;
+}
+
+
+/* Hero Heading */
+
+
+.herosection-heading-container {
+     /* border: 1px solid white; */
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     filter: drop-shadow(5px 5px 10px #11112C);
+     -webkit-filter: drop-shadow(5px 5px 10px #11112C);
+}
+
+.herosection-title {
+     text-align: center;
+     font-size: 5vw;
+     width: 70vw;
+     font-weight: 700;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     color: white;
+
+}
+
+
+.herosection-paragraph {
+     width: 40vw;
+
+     text-align: center;
+     color: #A8A99E !important;
+
+
+}
+
+
+/* Rotating text component styling */
+.rotating-text {
+     padding: 0.5rem 1rem;
+     overflow: hidden;
+     display: flex;
+     justify-content: center;
+     border-radius: 0.5rem;
+     background-color: transparent;
+
+}
+
+.rotating-text-split {
+     overflow: hidden;
+     padding-bottom: 0.25rem;
+}
+
+
+
+.herosection-title .text-rotate,
+.herosection-title .text-rotate-element,
+.herosection-title .text-rotate-word {
+     background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
+     /* gradient colors */
+     background-clip: text;
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+}
+
+
+
+.herosection-btns button {
+     width: 15rem;
+     padding: 0.6rem;
+     border-radius: 7px;
+     -webkit-border-radius: 7px;
+     -moz-border-radius: 7px;
+     -ms-border-radius: 7px;
+     -o-border-radius: 7px;
+     border: none;
+     margin: 1rem;
+     font-size: large;
+}
+
+.explore-btn {
+     background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
+      
+     color: white;
+}
+.browse-btn
+{
+     background-color: #09090B;
+     color: white;
+}
+
+
+
+@media (max-width:900px) {
+     .discover-tools {
+          display: flex;
+          justify-content: center;
+     }
+
+     .discover-tools__btn {
+          width: 65vw;
+          height: 7vw;
+     }
+
+     .discover-tools__text {
+          font-size: 3vw;
+     }
+
+     /* Responsive rotating text */
+     .rotating-text {
+          padding: 0.25rem 0.5rem;
+          font-size: 1rem;
+     }
+
+     .discover-tools__icon {
+          font-size: 5vw;
+          color: #8D62B8 !important;
+     }
+
+     .herosection-heading-container {
+          margin-top: 2rem;
+     }
+
+
+     .herosection-paragraph {
+          width: 80vw;
+          font-size: small;
+     }
+
+
+}
