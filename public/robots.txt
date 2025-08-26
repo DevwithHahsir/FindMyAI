@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://findmyai-ed99f.web.app/sitemap.xml

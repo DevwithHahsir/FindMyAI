@@ -1,4 +1,7 @@
 /* Navbar Custom Styles */
+/* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); */
+
+
 .navbar {
   /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
   padding-left: 2rem;
@@ -25,7 +28,6 @@
 
 
 .navbar-brand h2 {
-
   font-size: 2vw !important;
   background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
   /* gradient colors */
@@ -34,7 +36,9 @@
   -webkit-text-fill-color: transparent;
   font-size: 48px;
   font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Bebas Neue', cursive !important;
+  font-weight: 400;
+  font-style: normal;
 
 
 }
@@ -55,7 +59,7 @@
 
 li a {
 
-  color: #c9c9c9 !important;
+  color: #A8A99E !important;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -77,12 +81,12 @@ li a {
   -o-border-radius: 4px;
   border: none;
   color: #ffffff;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
 }
 
 /* Placeholder styling for the search input */
 .input-group input[type="search"]::placeholder {
-  color: #c9c9c9 !important;
+  color: #A8A99E !important;
   opacity: 1;
 }
 

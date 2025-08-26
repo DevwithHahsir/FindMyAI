@@ -4,12 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import Navbar from "./components/navbar/Navbar";
+import { HelmetProvider } from "react-helmet-async";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <HelmetProvider>
     <BrowserRouter>
- 
       <App />
     </BrowserRouter>
-  </React.StrictMode>
+  </HelmetProvider>
+  
 );
