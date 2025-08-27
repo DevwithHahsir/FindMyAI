@@ -6,6 +6,18 @@ const Tools = [
     subCategory: "Real-time Autocomplete",
     categoryId: 1,
     pricingModel: "Subscription",
+    websiteUrl: "https://github.com/features/copilot",
+    similarTools: [
+      {
+        name: "Amazon CodeWhisperer",
+        url: "https://aws.amazon.com/codewhisperer/",
+      },
+      { name: "Tabnine", url: "https://www.tabnine.com/" },
+      {
+        name: "Replit Ghost Writer",
+        url: "https://replit.com/site/ghostwriter",
+      },
+    ],
     plans: [
       {
         name: "Free for Students/OSS",
@@ -38,6 +50,15 @@ const Tools = [
     subCategory: "Real-time Autocomplete",
     categoryId: 1,
     pricingModel: "Freemium",
+    websiteUrl: "https://aws.amazon.com/codewhisperer/",
+    similarTools: [
+      { name: "GitHub Copilot", url: "https://github.com/features/copilot" },
+      { name: "Tabnine", url: "https://www.tabnine.com/" },
+      {
+        name: "Replit Ghost Writer",
+        url: "https://replit.com/site/ghostwriter",
+      },
+    ],
     plans: [
       {
         name: "Free Tier",
@@ -65,6 +86,15 @@ const Tools = [
     subCategory: "Real-time Autocomplete",
     categoryId: 1,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.tabnine.com/",
+    similarTools: [
+      { name: "GitHub Copilot", url: "https://github.com/features/copilot" },
+      {
+        name: "Amazon CodeWhisperer",
+        url: "https://aws.amazon.com/codewhisperer/",
+      },
+      { name: "Kite", url: "https://www.kite.com/" },
+    ],
     plans: [
       {
         name: "Starter",
@@ -92,6 +122,12 @@ const Tools = [
     subCategory: "Code Editor & Agent",
     categoryId: 1,
     pricingModel: "Freemium",
+    websiteUrl: "https://cursor.sh/",
+    similarTools: [
+      { name: "Visual Studio Code", url: "https://code.visualstudio.com/" },
+      { name: "JetBrains AI Assistant", url: "https://www.jetbrains.com/ai/" },
+      { name: "Replit", url: "https://replit.com/" },
+    ],
     plans: [
       {
         name: "Free",

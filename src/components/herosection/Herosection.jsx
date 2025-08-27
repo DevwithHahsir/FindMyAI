@@ -5,10 +5,19 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import React from "react";
 import CountUp from "../animations/CountUp";
 import SEO from "../seo/SEO";
+import Category from "../category/Category";
+import Trending from "../trending/Trending";
 
 function Herosection() {
+  const scrollToCategories = () => {
+    document
+      .getElementById("categories-section")
+      .scrollIntoView({ behavior: "smooth" });
+  };
+  // const categoriesSectionRef = useRef(null);
+
   return (
-    <main className="herosection-main-container">
+    <main className="herosection-main-container" id="hero-section">
       <SEO
         title="FindMyAI - Discover the Best AI Tools"
         description=" FindMyAI is a comprehensive AI tools directory (free & paid) for productivity and creativity. Explore categories and discover top AI tools."
@@ -57,7 +66,9 @@ function Herosection() {
           <button className="explore-btn">
             Explore Tools <IoIosArrowRoundForward />
           </button>
-          <button className="browse-btn">Browse Categories</button>
+          <button className="browse-btn" onClick={scrollToCategories}>
+            Browse Categories
+          </button>
         </div>
       </header>
 
@@ -101,6 +112,13 @@ function Herosection() {
           <div className="counter-text">Updates</div>
         </div>
       </section>
+
+      <div id="categories-section">
+        <Category />
+      </div>
+      <div id="trending-section">
+        <Trending />
+      </div>
     </main>
   );
 }

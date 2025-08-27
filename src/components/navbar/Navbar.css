@@ -14,6 +14,19 @@
   /* border: 1px solid #c9c9c9 ; */
   border-bottom: 1px solid #c9c9c950;
   /* border: none !important; */
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+
+/* Additional class to force stickiness */
+.always-sticky {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
 }
 
 
@@ -45,6 +58,24 @@
 
 .navbar-toggler {
   border: none;
+}
+
+/* Enhanced styling for active nav links */
+.nav-link.active {
+  color: #7C5DFE !important;
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left:0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
+  border-radius: 2px;
 }
 
 .nav-link {

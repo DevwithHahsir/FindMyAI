@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
+
+
+.category-main-container {
+    margin-top: 3rem;
+    height: max-content;
+    background-color: #09090B;
+    color: #c9c9c950 !important;
+    border-top: 1px solid;
+}
+
+.category-heading-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-heading-container h3 {
+    margin-top: 2rem;
+    color: white;
+
+}
+
+.category-heading-container h3 span {
+
+    background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
+    /* gradient colors */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.category-heading-container p {
+    color: #A8A99E !important;
+
+
+}
+
+
+/* CAAAARRDSSS */
+
+.category-cards-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+
+.card-container {
+    /* border: 1px solid; */
+    padding: 1rem;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    background-color: #ad79fc18;
+    backdrop-filter: blur(20px);
+}
+
+.card-title {
+    color: white;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.card-description {
+    width: 15rem;
+    height: 5rem;
+    color: #A8A99E !important;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.card-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-btn button {
+    color: white;
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 100%;
+
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.card-btn button:hover {
+    background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
+    border-color: #9269FD;
+}
+
+
+
+
+
+@media (max-width:900px) {
+
+
+    .category-heading-container p {
+        color: #A8A99E !important;
+        font-size: small;
+        display: flex !important;
+        justify-content: center !important;
+        width: 20rem;
+        align-items: center !important;
+    }
+
+
+
+
+    .card-container {
+        width: 10rem;
+    }
+
+    .card-title {
+        font-size: small;
+    }
+
+    .card-description {
+        font-size: x-small;
+        width: 9rem;
+        text-align: left;
+    }
+
+    .card-btn {}
+
+
+
+
+
+
+
+
+
+
+
+}
