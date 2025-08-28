@@ -1,7 +1,63 @@
+// Import icons from react-icons libraries (using outline/sketch style icons)
+import {
+  AiOutlineCode,
+  AiOutlineRobot,
+  AiOutlineFileImage,
+  AiOutlineSound,
+} from "react-icons/ai";
+import {
+  BiCodeAlt,
+  BiImage,
+  BiText,
+  BiVideo,
+  BiMusic,
+  BiData,
+} from "react-icons/bi";
+import {
+  CiTextAlignLeft,
+  CiImageOn,
+  CiVideoOn,
+  CiSettings,
+} from "react-icons/ci";
+import {
+  FiCode,
+  FiCpu,
+  FiImage,
+  FiVideo,
+  FiMusic,
+  FiDatabase,
+  FiBook,
+} from "react-icons/fi";
+import {
+  LuCode,
+  LuBrainCircuit,
+  LuPenLine,
+  LuImage,
+  LuMusic,
+  LuVideo,
+} from "react-icons/lu";
+import {
+  RiCodeLine,
+  RiRobotLine,
+  RiHealthBookLine,
+  RiMoneyDollarCircleLine,
+} from "react-icons/ri";
+import {
+  TbCode,
+  TbBrain,
+  TbWriting,
+  TbPhoto,
+  TbVideo,
+  TbMusic,
+  TbSchool,
+} from "react-icons/tb";
+
 // (Removed duplicate Tools declaration and export)
 const Tools = [
   {
     name: "GitHub Copilot",
+    description: "AI pair programmer that suggests code as you type.",
+    icon: LuCode,
     category: "Code Completion",
     subCategory: "Real-time Autocomplete",
     categoryId: 1,
@@ -46,6 +102,9 @@ const Tools = [
   },
   {
     name: "Amazon CodeWhisperer",
+    description:
+      "AWS-powered code assistant with security scans and code recommendations.",
+    icon: RiCodeLine,
     category: "Code Completion",
     subCategory: "Real-time Autocomplete",
     categoryId: 1,
@@ -82,6 +141,9 @@ const Tools = [
   },
   {
     name: "Tabnine",
+    description:
+      "AI code completion with personalized suggestions for your codebase.",
+    icon: AiOutlineCode,
     category: "Code Completion",
     subCategory: "Real-time Autocomplete",
     categoryId: 1,
@@ -118,6 +180,9 @@ const Tools = [
   },
   {
     name: "Cursor",
+    description:
+      "AI-native code editor with chat interface and intelligent code editing.",
+    icon: BiCodeAlt,
     category: "AI-First IDE",
     subCategory: "Code Editor & Agent",
     categoryId: 1,
@@ -153,6 +218,8 @@ const Tools = [
   },
   {
     name: "Replit (Ghostwriter)",
+    description: "Browser-based IDE with AI code generation and completion.",
+    icon: TbCode,
     category: "Cloud IDE",
     subCategory: "Browser-Based Coding",
     categoryId: 1,
@@ -177,10 +244,19 @@ const Tools = [
   },
   {
     name: "Claude (Anthropic)",
+    description:
+      "AI assistant with large context window for code and text analysis.",
+    icon: LuBrainCircuit,
     category: "Chat Assistant",
     subCategory: "Code Analysis & Long Context",
     categoryId: 1,
     pricingModel: "Freemium",
+    websiteUrl: "https://claude.ai/",
+    similarTools: [
+      { name: "ChatGPT", url: "https://chat.openai.com/" },
+      { name: "Google Gemini", url: "https://gemini.google.com/" },
+      { name: "Perplexity", url: "https://www.perplexity.ai/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -203,10 +279,18 @@ const Tools = [
   },
   {
     name: "Mintlify",
+    description: "Generate beautiful documentation from code automatically.",
+    icon: CiTextAlignLeft,
     category: "Documentation",
     subCategory: "Auto-Generate Docs",
     categoryId: 1,
     pricingModel: "Freemium",
+    websiteUrl: "https://mintlify.com/",
+    similarTools: [
+      { name: "GitBook", url: "https://www.gitbook.com/" },
+      { name: "ReadMe", url: "https://readme.com/" },
+      { name: "Docusaurus", url: "https://docusaurus.io/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -232,10 +316,19 @@ const Tools = [
 
   {
     name: "Midjourney",
+    description:
+      "Discord-based AI image generator with stunning artistic results.",
+    icon: CiImageOn,
     category: "Image Generation",
     subCategory: "AI Art Generation",
     categoryId: 2,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.midjourney.com/",
+    similarTools: [
+      { name: "DALL-E", url: "https://openai.com/dall-e-3" },
+      { name: "Stable Diffusion", url: "https://stability.ai/" },
+      { name: "Leonardo.AI", url: "https://leonardo.ai/" },
+    ],
     plans: [
       {
         name: "Basic",
@@ -268,6 +361,15 @@ const Tools = [
   },
   {
     name: "DALL·E 3",
+    description:
+      "OpenAI's image generator with precise text-to-image capabilities.",
+    websiteUrl: "https://openai.com/dall-e-3",
+    similarTools: [
+      { name: "Midjourney", url: "https://www.midjourney.com/" },
+      { name: "Stable Diffusion", url: "https://stability.ai/" },
+      { name: "Leonardo.AI", url: "https://leonardo.ai/" },
+    ],
+    icon: BiImage,
     category: "Image Generation",
     subCategory: "AI Art Generation",
     categoryId: 2,
@@ -294,10 +396,18 @@ const Tools = [
   },
   {
     name: "Leonardo.Ai",
+    description: "AI-powered image generation platform with stock assets.",
+    icon: FiImage,
     category: "Image Generation",
     subCategory: "AI Art Generation",
     categoryId: 2,
     pricingModel: "Subscription",
+    websiteUrl: "https://leonardo.ai/",
+    similarTools: [
+      { name: "Midjourney", url: "https://www.midjourney.com/" },
+      { name: "DALL-E", url: "https://openai.com/dall-e-3" },
+      { name: "Stable Diffusion", url: "https://stability.ai/" },
+    ],
     plans: [
       {
         name: "Starter",
@@ -337,6 +447,8 @@ const Tools = [
   },
   {
     name: "Freepik",
+    description: "AI-powered image generation platform with stock assets.",
+    icon: FiImage,
     category: "Image Generation",
     subCategory: "AI Art Generation",
     categoryId: 2,
@@ -360,6 +472,8 @@ const Tools = [
   },
   {
     name: "Photopea",
+    description: "Free online Photoshop alternative with AI-assisted features.",
+    icon: LuImage,
     category: "Image Editing",
     subCategory: "AI-Assisted Editing",
     categoryId: 2,
@@ -383,6 +497,8 @@ const Tools = [
   },
   {
     name: "Stable Diffusion",
+    description: "Open-source AI image generator with customizable models.",
+    icon: AiOutlineFileImage,
     category: "Image Generation",
     subCategory: "AI Art Generation",
     categoryId: 2,
@@ -404,6 +520,9 @@ const Tools = [
 
   {
     name: "ChatGPT",
+    description:
+      "Versatile conversational AI for text generation and analysis.",
+    icon: LuPenLine,
     category: "Text Generation",
     subCategory: "Essay & Content Writing",
     categoryId: 3,
@@ -445,10 +564,19 @@ const Tools = [
   },
   {
     name: "Grammarly",
+    description:
+      "AI writing assistant for grammar, style, and clarity improvement.",
+    icon: BiText,
     category: "Text Generation",
     subCategory: "Writing Assistance & Essay Enhancement",
     categoryId: 3,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.grammarly.com/",
+    similarTools: [
+      { name: "ProWritingAid", url: "https://prowritingaid.com/" },
+      { name: "Hemingway Editor", url: "https://hemingwayapp.com/" },
+      { name: "QuillBot", url: "https://quillbot.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -480,6 +608,8 @@ const Tools = [
   },
   {
     name: "Jasper",
+    description: "AI content writer for marketing copy and long-form content.",
+    icon: TbWriting,
     category: "Text Generation",
     subCategory: "Essay & Content Writing",
     categoryId: 3,
@@ -516,6 +646,9 @@ const Tools = [
   },
   {
     name: "Copy.ai",
+    description:
+      "AI copywriting tool for marketing content and social media posts.",
+    icon: FiCode,
     category: "Text Generation",
     subCategory: "Essay & Content Writing",
     categoryId: 3,
@@ -551,6 +684,8 @@ const Tools = [
   },
   {
     name: "Writesonic",
+    description: "AI writing platform for articles, ads, and emails.",
+    icon: AiOutlineRobot,
     category: "Text Generation",
     subCategory: "Essay & Content Writing",
     categoryId: 3,
@@ -590,6 +725,9 @@ const Tools = [
 
   {
     name: "Google Veo 3",
+    description:
+      "Text-to-video generator with high-quality synchronized audio.",
+    icon: LuVideo,
     category: "Video / Multimedia",
     subCategory: "Text-to-Video Generation",
     categoryId: 4,
@@ -617,6 +755,8 @@ const Tools = [
   },
   {
     name: "Runway Gen 4",
+    description: "Advanced AI video editing with text-to-video generation.",
+    icon: CiVideoOn,
     category: "Video / Multimedia",
     subCategory: "Generative Video Editing",
     categoryId: 4,
@@ -644,6 +784,8 @@ const Tools = [
   },
   {
     name: "OpenAI Sora",
+    description: "Text-to-video AI that creates realistic one-minute videos.",
+    icon: BiVideo,
     category: "Video / Multimedia",
     subCategory: "AI Video Generation",
     categoryId: 4,
@@ -671,6 +813,9 @@ const Tools = [
   },
   {
     name: "Canva AI Video Generator",
+    description:
+      "User-friendly video creation with templates and AI assistance.",
+    icon: FiVideo,
     category: "Video / Multimedia",
     subCategory: "Text-to-Video Creation",
     categoryId: 4,
@@ -698,6 +843,8 @@ const Tools = [
   },
   {
     name: "Synthesia",
+    description: "Creates videos with realistic AI avatars and natural speech.",
+    icon: RiRobotLine,
     category: "Video / Multimedia",
     subCategory: "AI Avatar Video Generation",
     categoryId: 4,
@@ -725,6 +872,8 @@ const Tools = [
   },
   {
     name: "InVideo AI",
+    description: "Quick video editor with stock assets and AI automation.",
+    icon: TbVideo,
     category: "Video / Multimedia",
     subCategory: "AI Video Editing",
     categoryId: 4,
@@ -755,6 +904,8 @@ const Tools = [
 
   {
     name: "Suno AI",
+    description: "Creates complete songs from text prompts with vocals.",
+    icon: BiMusic,
     category: "Audio / Music",
     subCategory: "Text-to-Song Generation",
     categoryId: 5,
@@ -781,6 +932,8 @@ const Tools = [
   },
   {
     name: "Beatoven.ai",
+    description: "Creates unique royalty-free music for videos and podcasts.",
+    icon: LuMusic,
     category: "Audio / Music",
     subCategory: "Royalty-Free Music Generation",
     categoryId: 5,
@@ -807,6 +960,8 @@ const Tools = [
   },
   {
     name: "AIVA",
+    description: "Compose emotional music for films and games with AI.",
+    icon: TbMusic,
     category: "Audio / Music",
     subCategory: "AI Music Composition",
     categoryId: 5,
@@ -833,6 +988,9 @@ const Tools = [
   },
   {
     name: "Soundful",
+    description:
+      "Creates royalty-free music tracks across multiple genres instantly.",
+    icon: FiMusic,
     category: "Audio / Music",
     subCategory: "AI Music Generation",
     categoryId: 5,
@@ -870,6 +1028,9 @@ const Tools = [
   },
   {
     name: "Mubert",
+    description:
+      "Text-to-music platform with royalty-free tracks for content creators.",
+    icon: BiMusic,
     category: "Audio / Music",
     subCategory: "AI Music Generation",
     categoryId: 5,
@@ -896,6 +1057,9 @@ const Tools = [
   },
   {
     name: "Eleven Music",
+    description:
+      "Create custom music with AI that adapts to your video content.",
+    icon: LuMusic,
     category: "Audio / Music",
     subCategory: "AI Music Generation",
     categoryId: 5,
@@ -925,6 +1089,9 @@ const Tools = [
 
   {
     name: "Microsoft 365 Copilot",
+    description:
+      "AI assistant integrated across Microsoft Office apps for productivity.",
+    icon: CiSettings,
     category: "Productivity / Office Tools",
     subCategory: "AI-Powered Office Suite",
     categoryId: 6,
@@ -952,6 +1119,9 @@ const Tools = [
   },
   {
     name: "Notion AI",
+    description:
+      "AI writing assistant that summarizes, drafts, and edits content.",
+    icon: LuPenLine,
     category: "Productivity / Office Tools",
     subCategory: "AI-Enhanced Workspace",
     categoryId: 6,
@@ -978,6 +1148,9 @@ const Tools = [
   },
   {
     name: "ClickUp AI",
+    description:
+      "AI assistant for task management, summaries, and documentation.",
+    icon: FiDatabase,
     category: "Productivity / Office Tools",
     subCategory: "AI-Driven Project Management",
     categoryId: 6,
@@ -1004,6 +1177,8 @@ const Tools = [
   },
   {
     name: "Zapier AI",
+    description: "Build and automate workflows with natural language commands.",
+    icon: FiCpu,
     category: "Productivity / Office Tools",
     subCategory: "AI-Powered Automation",
     categoryId: 6,
@@ -1032,6 +1207,9 @@ const Tools = [
   // Business / Marketing / Sales Tools (categoryId: 7)
   {
     name: "HubSpot AI",
+    description:
+      "AI-powered marketing content generation and customer engagement tools.",
+    icon: RiMoneyDollarCircleLine,
     category: "CRM & Marketing",
     subCategory: "Customer Relationship Management",
     categoryId: 7,
@@ -1068,6 +1246,9 @@ const Tools = [
   },
   {
     name: "Salesforce Einstein",
+    description:
+      "AI-powered insights and automation for customer relationship management.",
+    icon: AiOutlineRobot,
     category: "CRM & Analytics",
     subCategory: "AI-Powered Sales",
     categoryId: 7,
@@ -1095,6 +1276,9 @@ const Tools = [
   },
   {
     name: "Drift",
+    description:
+      "Conversational AI platform for customer engagement and sales.",
+    icon: AiOutlineRobot,
     category: "Conversational Marketing",
     subCategory: "AI Chatbots",
     categoryId: 7,
@@ -1126,6 +1310,9 @@ const Tools = [
 Tools.push(
   {
     name: "Tableau with Einstein AI",
+    description:
+      "Data visualization platform with AI-powered analytics and insights.",
+    icon: BiData,
     category: "Data Visualization",
     subCategory: "AI-Enhanced Analytics",
     categoryId: 8,
@@ -1153,6 +1340,9 @@ Tools.push(
   },
   {
     name: "DataRobot",
+    description:
+      "End-to-end platform for building and deploying machine learning models.",
+    icon: TbCode,
     category: "AutoML",
     subCategory: "Automated Machine Learning",
     categoryId: 8,
@@ -1180,6 +1370,9 @@ Tools.push(
   },
   {
     name: "Octoparse",
+    description:
+      "Intelligent web scraping tool for extracting data without coding.",
+    icon: FiDatabase,
     category: "Data Collection",
     subCategory: "AI Web Scraping",
     categoryId: 8,
@@ -1211,6 +1404,9 @@ Tools.push(
 Tools.push(
   {
     name: "Duolingo Max",
+    description:
+      "Language learning app with AI conversations and personalized explanations.",
+    icon: TbSchool,
     category: "Language Learning",
     subCategory: "AI Tutor",
     categoryId: 9,
@@ -1247,6 +1443,9 @@ Tools.push(
   },
   {
     name: "Quizlet",
+    description:
+      "AI-powered study tools with smart flashcards and personalized learning.",
+    icon: FiBook,
     category: "Study Assistant",
     subCategory: "AI-Powered Flashcards",
     categoryId: 9,
@@ -1270,6 +1469,9 @@ Tools.push(
   },
   {
     name: "Coursera Plus",
+    description:
+      "Online courses with AI-personalized recommendations and learning paths.",
+    icon: TbSchool,
     category: "Online Learning",
     subCategory: "AI-Recommended Courses",
     categoryId: 9,
@@ -1301,6 +1503,9 @@ Tools.push(
 Tools.push(
   {
     name: "Ada Health",
+    description:
+      "AI-powered symptom assessment and personalized health guidance.",
+    icon: RiHealthBookLine,
     category: "Health Assessment",
     subCategory: "AI Symptom Checker",
     categoryId: 10,
@@ -1328,6 +1533,9 @@ Tools.push(
   },
   {
     name: "BrainKey",
+    description:
+      "AI platform for analyzing brain MRIs with personalized insights.",
+    icon: TbBrain,
     category: "Medical Imaging",
     subCategory: "AI Brain Analysis",
     categoryId: 10,
@@ -1355,6 +1563,9 @@ Tools.push(
   },
   {
     name: "Flo",
+    description:
+      "AI-powered women's health tracker with personalized insights.",
+    icon: RiHealthBookLine,
     category: "Women's Health",
     subCategory: "AI Health Assistant",
     categoryId: 10,
@@ -1386,6 +1597,9 @@ Tools.push(
 Tools.push(
   {
     name: "DoNotPay",
+    description:
+      "AI lawyer that fights corporations, beats bureaucracy, and sues people.",
+    icon: FiBook,
     category: "Legal Assistant",
     subCategory: "AI Legal Services",
     categoryId: 11,
@@ -1404,6 +1618,8 @@ Tools.push(
   },
   {
     name: "Harvey",
+    description: "AI assistant for legal research and document analysis.",
+    icon: LuPenLine,
     category: "Legal Research",
     subCategory: "AI Legal Analysis",
     categoryId: 11,
@@ -1422,6 +1638,8 @@ Tools.push(
   },
   {
     name: "Casetext",
+    description: "AI legal research tool that summarizes case law quickly.",
+    icon: BiText,
     category: "Legal Research",
     subCategory: "AI Legal Assistant",
     categoryId: 11,
@@ -1453,6 +1671,9 @@ Tools.push(
 Tools.push(
   {
     name: "NVIDIA GameGAN",
+    description:
+      "AI-powered engine that creates game environments by watching gameplay.",
+    icon: FiCpu,
     category: "Game Development",
     subCategory: "AI Content Generation",
     categoryId: 12,
@@ -1480,6 +1701,8 @@ Tools.push(
   },
   {
     name: "AI Dungeon",
+    description: "Text adventure game with AI-generated infinite storylines.",
+    icon: TbWriting,
     category: "Interactive Fiction",
     subCategory: "AI Storytelling",
     categoryId: 12,
@@ -1516,6 +1739,8 @@ Tools.push(
   },
   {
     name: "Replika",
+    description: "AI friend that learns about you through conversations.",
+    icon: AiOutlineRobot,
     category: "AI Companion",
     subCategory: "Virtual Friend",
     categoryId: 12,
@@ -1547,6 +1772,8 @@ Tools.push(
 Tools.push(
   {
     name: "Stitch Fix",
+    description: "Personal styling service that uses AI to select clothes.",
+    icon: CiSettings,
     category: "Fashion",
     subCategory: "AI Style Recommendations",
     categoryId: 13,
@@ -1565,6 +1792,8 @@ Tools.push(
   },
   {
     name: "Planner 5D",
+    description: "Design homes and interiors with AI-assisted room planning.",
+    icon: FiImage,
     category: "Interior Design",
     subCategory: "AI Room Planning",
     categoryId: 13,
@@ -1592,6 +1821,8 @@ Tools.push(
   },
   {
     name: "Prose",
+    description: "Custom hair care products formulated by AI for individuals.",
+    icon: CiSettings,
     category: "Personal Care",
     subCategory: "AI Custom Hair Products",
     categoryId: 13,
@@ -1614,6 +1845,9 @@ Tools.push(
 Tools.push(
   {
     name: "Darktrace",
+    description:
+      "AI cybersecurity system that detects emerging threats in real-time.",
+    icon: RiRobotLine,
     category: "Network Security",
     subCategory: "AI Threat Detection",
     categoryId: 14,
@@ -1641,6 +1875,9 @@ Tools.push(
   },
   {
     name: "CrowdStrike Falcon",
+    description:
+      "AI-powered security platform that stops breaches automatically.",
+    icon: FiCpu,
     category: "Endpoint Security",
     subCategory: "AI Threat Prevention",
     categoryId: 14,
@@ -1668,6 +1905,9 @@ Tools.push(
   },
   {
     name: "Recorded Future",
+    description:
+      "AI-driven intelligence platform that analyzes security risks.",
+    icon: FiDatabase,
     category: "Threat Intelligence",
     subCategory: "AI Risk Analysis",
     categoryId: 14,
@@ -1690,6 +1930,9 @@ Tools.push(
 Tools.push(
   {
     name: "Atomwise",
+    description:
+      "AI-powered drug discovery platform that predicts molecular structures.",
+    icon: TbBrain,
     category: "Drug Discovery",
     subCategory: "AI Molecular Design",
     categoryId: 15,
@@ -1708,6 +1951,9 @@ Tools.push(
   },
   {
     name: "Unlearn.AI",
+    description:
+      "Creates digital twins of patients for clinical trial efficiency.",
+    icon: LuBrainCircuit,
     category: "Clinical Trials",
     subCategory: "AI Digital Twins",
     categoryId: 15,
@@ -1726,6 +1972,9 @@ Tools.push(
   },
   {
     name: "Climate AI",
+    description:
+      "AI platform for climate risk assessment and adaptation planning.",
+    icon: BiData,
     category: "Climate Tech",
     subCategory: "AI Climate Prediction",
     categoryId: 15,
