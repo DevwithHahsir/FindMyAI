@@ -224,6 +224,7 @@ const Tools = [
     subCategory: "Browser-Based Coding",
     categoryId: 1,
     pricingModel: "Freemium",
+    websiteUrl: "https://replit.com/login?source=home&goto=%2F%7E",
     plans: [
       {
         name: "Basic",
@@ -453,6 +454,7 @@ const Tools = [
     subCategory: "AI Art Generation",
     categoryId: 2,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.freepik.com/ai/image-generator",
     plans: [
       {
         name: "Free",
@@ -478,6 +480,12 @@ const Tools = [
     subCategory: "AI-Assisted Editing",
     categoryId: 2,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.photopea.com/",
+    similarTools: [
+      { name: "GIMP", url: "https://www.gimp.org/" },
+      { name: "Pixlr", url: "https://pixlr.com/" },
+      { name: "Canva", url: "https://www.canva.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -503,6 +511,12 @@ const Tools = [
     subCategory: "AI Art Generation",
     categoryId: 2,
     pricingModel: "Open Source",
+    websiteUrl: "https://stability.ai/stable-diffusion",
+    similarTools: [
+      { name: "Midjourney", url: "https://www.midjourney.com/" },
+      { name: "DALL-E", url: "https://openai.com/dall-e-3" },
+      { name: "Leonardo.AI", url: "https://leonardo.ai/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -527,6 +541,12 @@ const Tools = [
     subCategory: "Essay & Content Writing",
     categoryId: 3,
     pricingModel: "Freemium",
+    websiteUrl: "https://chat.openai.com/",
+    similarTools: [
+      { name: "Claude", url: "https://claude.ai/" },
+      { name: "Google Gemini", url: "https://gemini.google.com/" },
+      { name: "Perplexity", url: "https://www.perplexity.ai/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -614,6 +634,12 @@ const Tools = [
     subCategory: "Essay & Content Writing",
     categoryId: 3,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.jasper.ai/",
+    similarTools: [
+      { name: "Copy.ai", url: "https://www.copy.ai/" },
+      { name: "Writesonic", url: "https://writesonic.com/" },
+      { name: "Copysmith", url: "https://copysmith.ai/" },
+    ],
     plans: [
       {
         name: "Creator",
@@ -653,6 +679,12 @@ const Tools = [
     subCategory: "Essay & Content Writing",
     categoryId: 3,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.copy.ai/",
+    similarTools: [
+      { name: "Jasper", url: "https://www.jasper.ai/" },
+      { name: "Writesonic", url: "https://writesonic.com/" },
+      { name: "Rytr", url: "https://rytr.me/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -690,6 +722,12 @@ const Tools = [
     subCategory: "Essay & Content Writing",
     categoryId: 3,
     pricingModel: "Subscription",
+    websiteUrl: "https://writesonic.com/",
+    similarTools: [
+      { name: "Jasper", url: "https://www.jasper.ai/" },
+      { name: "Copy.ai", url: "https://www.copy.ai/" },
+      { name: "WordAI", url: "https://wordai.com/" },
+    ],
     plans: [
       {
         name: "Lite",
@@ -732,6 +770,15 @@ const Tools = [
     subCategory: "Text-to-Video Generation",
     categoryId: 4,
     pricingModel: "Subscription",
+    websiteUrl: "https://gemini.google/overview/video-generation/",
+    similarTools: [
+      { name: "Runway Gen 4", url: "https://runwayml.com/" },
+      {
+        name: "OpenAI Sora",
+        url: "https://openai.com/research/video-generation",
+      },
+      { name: "Synthesia", url: "https://www.synthesia.io/" },
+    ],
     plans: [
       {
         name: "Pro",
@@ -761,6 +808,18 @@ const Tools = [
     subCategory: "Generative Video Editing",
     categoryId: 4,
     pricingModel: "Subscription",
+    websiteUrl: "https://runwayml.com/",
+    similarTools: [
+      {
+        name: "Google Veo 3",
+        url: "https://gemini.google/overview/video-generation/",
+      },
+      {
+        name: "OpenAI Sora",
+        url: "https://openai.com/research/video-generation",
+      },
+      { name: "Descript", url: "https://www.descript.com/" },
+    ],
     plans: [
       {
         name: "Creator",
@@ -790,6 +849,15 @@ const Tools = [
     subCategory: "AI Video Generation",
     categoryId: 4,
     pricingModel: "Subscription",
+    websiteUrl: "https://openai.com/research/video-generation",
+    similarTools: [
+      {
+        name: "Google Veo 3",
+        url: "https://gemini.google/overview/video-generation/",
+      },
+      { name: "Runway Gen 4", url: "https://runwayml.com/" },
+      { name: "Synthesia", url: "https://www.synthesia.io/" },
+    ],
     plans: [
       {
         name: "Plus",
@@ -820,6 +888,12 @@ const Tools = [
     subCategory: "Text-to-Video Creation",
     categoryId: 4,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.canva.com/video-editor/",
+    similarTools: [
+      { name: "InVideo AI", url: "https://invideo.io/" },
+      { name: "Kapwing", url: "https://www.kapwing.com/" },
+      { name: "Lumen5", url: "https://lumen5.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -849,6 +923,12 @@ const Tools = [
     subCategory: "AI Avatar Video Generation",
     categoryId: 4,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.synthesia.io/",
+    similarTools: [
+      { name: "HeyGen", url: "https://www.heygen.com/" },
+      { name: "D-ID", url: "https://www.d-id.com/" },
+      { name: "Elai.io", url: "https://elai.io/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -878,6 +958,15 @@ const Tools = [
     subCategory: "AI Video Editing",
     categoryId: 4,
     pricingModel: "Freemium",
+    websiteUrl: "https://invideo.io/",
+    similarTools: [
+      {
+        name: "Canva AI Video Generator",
+        url: "https://www.canva.com/video-editor/",
+      },
+      { name: "Pictory", url: "https://pictory.ai/" },
+      { name: "Lumen5", url: "https://lumen5.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -910,6 +999,12 @@ const Tools = [
     subCategory: "Text-to-Song Generation",
     categoryId: 5,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.suno.ai/",
+    similarTools: [
+      { name: "Soundful", url: "https://soundful.com/" },
+      { name: "Mubert", url: "https://mubert.com/" },
+      { name: "Udio", url: "https://udio.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -938,6 +1033,12 @@ const Tools = [
     subCategory: "Royalty-Free Music Generation",
     categoryId: 5,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.beatoven.ai/",
+    similarTools: [
+      { name: "AIVA", url: "https://www.aiva.ai/" },
+      { name: "Soundraw", url: "https://soundraw.io/" },
+      { name: "Soundful", url: "https://soundful.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -966,6 +1067,12 @@ const Tools = [
     subCategory: "AI Music Composition",
     categoryId: 5,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.aiva.ai/",
+    similarTools: [
+      { name: "Beatoven.ai", url: "https://www.beatoven.ai/" },
+      { name: "Amper Music", url: "https://www.ampermusic.com/" },
+      { name: "Ecrett Music", url: "https://ecrettmusic.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -995,6 +1102,12 @@ const Tools = [
     subCategory: "AI Music Generation",
     categoryId: 5,
     pricingModel: "Subscription",
+    websiteUrl: "https://soundful.com/",
+    similarTools: [
+      { name: "Suno AI", url: "https://www.suno.ai/" },
+      { name: "AIVA", url: "https://www.aiva.ai/" },
+      { name: "Mubert", url: "https://mubert.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1035,6 +1148,12 @@ const Tools = [
     subCategory: "AI Music Generation",
     categoryId: 5,
     pricingModel: "Pay-as-you-go",
+    websiteUrl: "https://mubert.com/",
+    similarTools: [
+      { name: "Soundful", url: "https://soundful.com/" },
+      { name: "Suno AI", url: "https://www.suno.ai/" },
+      { name: "Beatoven.ai", url: "https://www.beatoven.ai/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1064,6 +1183,12 @@ const Tools = [
     subCategory: "AI Music Generation",
     categoryId: 5,
     pricingModel: "Pay-per-use",
+    websiteUrl: "https://elevenlabs.io/music",
+    similarTools: [
+      { name: "Soundful", url: "https://soundful.com/" },
+      { name: "Mubert", url: "https://mubert.com/" },
+      { name: "AIVA", url: "https://www.aiva.ai/" },
+    ],
     plans: [
       {
         name: "Pay-as-you-go",
@@ -1096,6 +1221,12 @@ const Tools = [
     subCategory: "AI-Powered Office Suite",
     categoryId: 6,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.microsoft.com/microsoft-365/ai",
+    similarTools: [
+      { name: "Google Workspace", url: "https://workspace.google.com/" },
+      { name: "Notion AI", url: "https://www.notion.so/product/ai" },
+      { name: "Mem.ai", url: "https://mem.ai/" },
+    ],
     plans: [
       {
         name: "Business Standard",
@@ -1126,6 +1257,15 @@ const Tools = [
     subCategory: "AI-Enhanced Workspace",
     categoryId: 6,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.notion.so/product/ai",
+    similarTools: [
+      {
+        name: "Microsoft 365 Copilot",
+        url: "https://www.microsoft.com/microsoft-365/ai",
+      },
+      { name: "Mem.ai", url: "https://mem.ai/" },
+      { name: "Craft", url: "https://www.craft.do/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1155,6 +1295,12 @@ const Tools = [
     subCategory: "AI-Driven Project Management",
     categoryId: 6,
     pricingModel: "Subscription",
+    websiteUrl: "https://clickup.com/features/ai",
+    similarTools: [
+      { name: "Asana", url: "https://asana.com/product/ai" },
+      { name: "Monday.com", url: "https://monday.com/ai/" },
+      { name: "Trello", url: "https://trello.com/ai" },
+    ],
     plans: [
       {
         name: "Free Forever",
@@ -1183,6 +1329,12 @@ const Tools = [
     subCategory: "AI-Powered Automation",
     categoryId: 6,
     pricingModel: "Subscription",
+    websiteUrl: "https://zapier.com/ai",
+    similarTools: [
+      { name: "Make (formerly Integromat)", url: "https://www.make.com/" },
+      { name: "n8n", url: "https://n8n.io/" },
+      { name: "IFTTT", url: "https://ifttt.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1214,6 +1366,15 @@ const Tools = [
     subCategory: "Customer Relationship Management",
     categoryId: 7,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.hubspot.com/artificial-intelligence",
+    similarTools: [
+      {
+        name: "Salesforce Einstein",
+        url: "https://www.salesforce.com/products/einstein/overview/",
+      },
+      { name: "ActiveCampaign", url: "https://www.activecampaign.com/" },
+      { name: "Mailchimp", url: "https://mailchimp.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1253,6 +1414,18 @@ const Tools = [
     subCategory: "AI-Powered Sales",
     categoryId: 7,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.salesforce.com/products/einstein/overview/",
+    similarTools: [
+      {
+        name: "HubSpot AI",
+        url: "https://www.hubspot.com/artificial-intelligence",
+      },
+      {
+        name: "Microsoft Dynamics 365",
+        url: "https://dynamics.microsoft.com/ai/",
+      },
+      { name: "Zoho CRM", url: "https://www.zoho.com/crm/" },
+    ],
     plans: [
       {
         name: "Einstein Starter",
@@ -1283,6 +1456,12 @@ const Tools = [
     subCategory: "AI Chatbots",
     categoryId: 7,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.drift.com/",
+    similarTools: [
+      { name: "Intercom", url: "https://www.intercom.com/" },
+      { name: "Zendesk AI", url: "https://www.zendesk.com/ai/" },
+      { name: "LivePerson", url: "https://www.liveperson.com/" },
+    ],
     plans: [
       {
         name: "Premium",
@@ -1317,6 +1496,15 @@ Tools.push(
     subCategory: "AI-Enhanced Analytics",
     categoryId: 8,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.tableau.com/products/ai-analytics",
+    similarTools: [
+      { name: "Power BI", url: "https://powerbi.microsoft.com/" },
+      { name: "ThoughtSpot", url: "https://www.thoughtspot.com/" },
+      {
+        name: "Qlik Sense",
+        url: "https://www.qlik.com/us/products/qlik-sense",
+      },
+    ],
     plans: [
       {
         name: "Creator",
@@ -1347,6 +1535,12 @@ Tools.push(
     subCategory: "Automated Machine Learning",
     categoryId: 8,
     pricingModel: "Enterprise",
+    websiteUrl: "https://www.datarobot.com/",
+    similarTools: [
+      { name: "H2O.ai", url: "https://h2o.ai/" },
+      { name: "Google Cloud AutoML", url: "https://cloud.google.com/automl" },
+      { name: "Amazon SageMaker", url: "https://aws.amazon.com/sagemaker/" },
+    ],
     plans: [
       {
         name: "Business",
@@ -1377,6 +1571,12 @@ Tools.push(
     subCategory: "AI Web Scraping",
     categoryId: 8,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.octoparse.com/",
+    similarTools: [
+      { name: "ParseHub", url: "https://www.parsehub.com/" },
+      { name: "Import.io", url: "https://www.import.io/" },
+      { name: "Diffbot", url: "https://www.diffbot.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1411,6 +1611,12 @@ Tools.push(
     subCategory: "AI Tutor",
     categoryId: 9,
     pricingModel: "Freemium",
+    websiteUrl: "https://www.duolingo.com/max",
+    similarTools: [
+      { name: "Babbel", url: "https://www.babbel.com/" },
+      { name: "Rosetta Stone", url: "https://www.rosettastone.com/" },
+      { name: "Busuu", url: "https://www.busuu.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1450,6 +1656,12 @@ Tools.push(
     subCategory: "AI-Powered Flashcards",
     categoryId: 9,
     pricingModel: "Freemium",
+    websiteUrl: "https://quizlet.com/",
+    similarTools: [
+      { name: "Anki", url: "https://apps.ankiweb.net/" },
+      { name: "Chegg", url: "https://www.chegg.com/" },
+      { name: "Brainscape", url: "https://www.brainscape.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1476,6 +1688,12 @@ Tools.push(
     subCategory: "AI-Recommended Courses",
     categoryId: 9,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.coursera.org/courseraplus",
+    similarTools: [
+      { name: "Udemy", url: "https://www.udemy.com/" },
+      { name: "edX", url: "https://www.edx.org/" },
+      { name: "LinkedIn Learning", url: "https://www.linkedin.com/learning/" },
+    ],
     plans: [
       {
         name: "Monthly",
@@ -1510,6 +1728,12 @@ Tools.push(
     subCategory: "AI Symptom Checker",
     categoryId: 10,
     pricingModel: "Freemium",
+    websiteUrl: "https://ada.com/",
+    similarTools: [
+      { name: "Babylon Health", url: "https://www.babylonhealth.com/" },
+      { name: "K Health", url: "https://khealth.com/" },
+      { name: "Buoy Health", url: "https://www.buoyhealth.com/" },
+    ],
     plans: [
       {
         name: "Personal",
@@ -1540,6 +1764,12 @@ Tools.push(
     subCategory: "AI Brain Analysis",
     categoryId: 10,
     pricingModel: "Subscription",
+    websiteUrl: "https://brainkey.ai/",
+    similarTools: [
+      { name: "Arterys", url: "https://www.arterys.com/" },
+      { name: "Aidoc", url: "https://www.aidoc.com/" },
+      { name: "Enlitic", url: "https://www.enlitic.com/" },
+    ],
     plans: [
       {
         name: "Individual",
@@ -1570,6 +1800,12 @@ Tools.push(
     subCategory: "AI Health Assistant",
     categoryId: 10,
     pricingModel: "Freemium",
+    websiteUrl: "https://flo.health/",
+    similarTools: [
+      { name: "Clue", url: "https://helloclue.com/" },
+      { name: "Ovia", url: "https://www.oviahealth.com/" },
+      { name: "Natural Cycles", url: "https://www.naturalcycles.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1604,6 +1840,12 @@ Tools.push(
     subCategory: "AI Legal Services",
     categoryId: 11,
     pricingModel: "Subscription",
+    websiteUrl: "https://donotpay.com/",
+    similarTools: [
+      { name: "Rocket Lawyer", url: "https://www.rocketlawyer.com/" },
+      { name: "LegalZoom", url: "https://www.legalzoom.com/" },
+      { name: "Hello Divorce", url: "https://hellodivorce.com/" },
+    ],
     plans: [
       {
         name: "Monthly",
@@ -1624,6 +1866,12 @@ Tools.push(
     subCategory: "AI Legal Analysis",
     categoryId: 11,
     pricingModel: "Enterprise",
+    websiteUrl: "https://www.harvey.ai/",
+    similarTools: [
+      { name: "Casetext", url: "https://casetext.com/" },
+      { name: "Lex Machina", url: "https://lexmachina.com/" },
+      { name: "ROSS Intelligence", url: "https://www.rossintelligence.com/" },
+    ],
     plans: [
       {
         name: "Professional",
@@ -1644,6 +1892,15 @@ Tools.push(
     subCategory: "AI Legal Assistant",
     categoryId: 11,
     pricingModel: "Subscription",
+    websiteUrl: "https://casetext.com/",
+    similarTools: [
+      { name: "Harvey", url: "https://www.harvey.ai/" },
+      {
+        name: "Westlaw Edge",
+        url: "https://legal.thomsonreuters.com/en/products/westlaw-edge",
+      },
+      { name: "LexisNexis", url: "https://www.lexisnexis.com/" },
+    ],
     plans: [
       {
         name: "Professional",
@@ -1678,6 +1935,15 @@ Tools.push(
     subCategory: "AI Content Generation",
     categoryId: 12,
     pricingModel: "Free/Enterprise",
+    websiteUrl: "https://developer.nvidia.com/blog/nvidia-research-gamegan/",
+    similarTools: [
+      {
+        name: "Unity ML-Agents",
+        url: "https://unity.com/products/machine-learning-agents",
+      },
+      { name: "DALL-E 3", url: "https://openai.com/dall-e-3" },
+      { name: "Midjourney", url: "https://www.midjourney.com/" },
+    ],
     plans: [
       {
         name: "Research",
@@ -1707,6 +1973,12 @@ Tools.push(
     subCategory: "AI Storytelling",
     categoryId: 12,
     pricingModel: "Freemium",
+    websiteUrl: "https://play.aidungeon.io/",
+    similarTools: [
+      { name: "Novel AI", url: "https://novelai.net/" },
+      { name: "Replika", url: "https://replika.com/" },
+      { name: "Character.AI", url: "https://character.ai/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1745,6 +2017,12 @@ Tools.push(
     subCategory: "Virtual Friend",
     categoryId: 12,
     pricingModel: "Freemium",
+    websiteUrl: "https://replika.com/",
+    similarTools: [
+      { name: "Character.AI", url: "https://character.ai/" },
+      { name: "Anima", url: "https://anima.ai/" },
+      { name: "Chai", url: "https://chai.ml/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1778,6 +2056,15 @@ Tools.push(
     subCategory: "AI Style Recommendations",
     categoryId: 13,
     pricingModel: "Service-based",
+    websiteUrl: "https://www.stitchfix.com/",
+    similarTools: [
+      { name: "Thread", url: "https://www.thread.com/" },
+      { name: "Nordstrom Trunk Club", url: "https://www.trunkclub.com/" },
+      {
+        name: "Prime Wardrobe",
+        url: "https://www.amazon.com/learn-more-prime-wardrobe",
+      },
+    ],
     plans: [
       {
         name: "Standard",
@@ -1798,6 +2085,12 @@ Tools.push(
     subCategory: "AI Room Planning",
     categoryId: 13,
     pricingModel: "Freemium",
+    websiteUrl: "https://planner5d.com/",
+    similarTools: [
+      { name: "Homestyler", url: "https://www.homestyler.com/" },
+      { name: "RoomSketcher", url: "https://www.roomsketcher.com/" },
+      { name: "Foyr Neo", url: "https://foyr.com/" },
+    ],
     plans: [
       {
         name: "Free",
@@ -1827,6 +2120,12 @@ Tools.push(
     subCategory: "AI Custom Hair Products",
     categoryId: 13,
     pricingModel: "Product-based",
+    websiteUrl: "https://prose.com/",
+    similarTools: [
+      { name: "Function of Beauty", url: "https://www.functionofbeauty.com/" },
+      { name: "Proven Skincare", url: "https://www.provenskincare.com/" },
+      { name: "Atolla", url: "https://atolla.com/" },
+    ],
     plans: [
       {
         name: "Custom Bundle",
@@ -1852,6 +2151,12 @@ Tools.push(
     subCategory: "AI Threat Detection",
     categoryId: 14,
     pricingModel: "Enterprise",
+    websiteUrl: "https://www.darktrace.com/",
+    similarTools: [
+      { name: "CrowdStrike Falcon", url: "https://www.crowdstrike.com/" },
+      { name: "SentinelOne", url: "https://www.sentinelone.com/" },
+      { name: "Cylance", url: "https://www.cylance.com/" },
+    ],
     plans: [
       {
         name: "Enterprise Immune System",
@@ -1882,6 +2187,15 @@ Tools.push(
     subCategory: "AI Threat Prevention",
     categoryId: 14,
     pricingModel: "Subscription",
+    websiteUrl: "https://www.crowdstrike.com/",
+    similarTools: [
+      { name: "Darktrace", url: "https://www.darktrace.com/" },
+      { name: "Carbon Black", url: "https://www.carbonblack.com/" },
+      {
+        name: "Microsoft Defender",
+        url: "https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint",
+      },
+    ],
     plans: [
       {
         name: "Pro",
@@ -1912,6 +2226,12 @@ Tools.push(
     subCategory: "AI Risk Analysis",
     categoryId: 14,
     pricingModel: "Enterprise",
+    websiteUrl: "https://www.recordedfuture.com/",
+    similarTools: [
+      { name: "Mandiant", url: "https://www.mandiant.com/" },
+      { name: "IntSights", url: "https://intsights.com/" },
+      { name: "DarkOwl", url: "https://www.darkowl.com/" },
+    ],
     plans: [
       {
         name: "Intelligence Platform",
@@ -1937,6 +2257,12 @@ Tools.push(
     subCategory: "AI Molecular Design",
     categoryId: 15,
     pricingModel: "Enterprise/Partnership",
+    websiteUrl: "https://www.atomwise.com/",
+    similarTools: [
+      { name: "Insilico Medicine", url: "https://insilico.com/" },
+      { name: "BenevolentAI", url: "https://www.benevolent.com/" },
+      { name: "Exscientia", url: "https://www.exscientia.ai/" },
+    ],
     plans: [
       {
         name: "Research",
@@ -1958,6 +2284,12 @@ Tools.push(
     subCategory: "AI Digital Twins",
     categoryId: 15,
     pricingModel: "Enterprise",
+    websiteUrl: "https://www.unlearn.ai/",
+    similarTools: [
+      { name: "Medidata", url: "https://www.medidata.com/" },
+      { name: "Deep6 AI", url: "https://deep6.ai/" },
+      { name: "Saama Technologies", url: "https://www.saama.com/" },
+    ],
     plans: [
       {
         name: "Clinical",
@@ -1979,6 +2311,12 @@ Tools.push(
     subCategory: "AI Climate Prediction",
     categoryId: 15,
     pricingModel: "Enterprise",
+    websiteUrl: "https://climate.ai/",
+    similarTools: [
+      { name: "Jupiter Intelligence", url: "https://jupiterintel.com/" },
+      { name: "One Concern", url: "https://www.oneconcern.com/" },
+      { name: "ClimateAi", url: "https://www.climateai.com/" },
+    ],
     plans: [
       {
         name: "Enterprise",

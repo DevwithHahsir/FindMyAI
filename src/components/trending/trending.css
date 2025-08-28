@@ -149,25 +149,27 @@
 }
 
 .trending-btns {
-
     display: flex !important;
 }
 
-.trending-btns button {
+.trending-btns button,
+.trending-btns a {
     width: 9rem;
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.3rem;
+    text-decoration: none;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
 }
 
-
 .trending-btns .browse-btn {
-
-
     border: 1px solid #A8A99E;
-
 }
 
 
@@ -203,12 +205,12 @@
     }
 
     .trending-btns {
-
         display: flex;
         flex-wrap: nowrap;
     }
 
-    .trending-btns button {
+    .trending-btns button,
+    .trending-btns a {
         width: 8rem;
         height: 2.5rem;
         display: flex;

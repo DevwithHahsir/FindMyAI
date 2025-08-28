@@ -225,16 +225,30 @@ function Trending() {
               {/* trend BUttons */}
 
               <div className="trending-btns herosection-btns">
-                <button className="explore-btn">
-                  {" "}
+                <a
+                  href={tool.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="explore-btn"
+                  title="Visit the official website"
+                  onClick={(e) => {
+                    if (!tool.websiteUrl) {
+                      e.preventDefault();
+                      alert("Website URL is not available for this tool.");
+                    }
+                  }}
+                >
                   <CiLink />
                   visit
-                </button>
-                <button className="browse-btn">
-                  {" "}
+                </a>
+                <a
+                  href={`/tool/${tool.id}`}
+                  className="browse-btn"
+                  title="View detailed information about this tool"
+                >
                   <IoEyeOutline />
                   Details
-                </button>
+                </a>
               </div>
             </section>
           ))}

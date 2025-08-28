@@ -35,14 +35,6 @@ function PostData() {
           for (let tool of tools) {
             // Create a serializable version of the tool without the icon React component
             const serializableTool = { ...tool };
-
-            // Store icon name as a string instead of removing it completely
-            if (tool.icon) {
-              serializableTool.iconName = tool.icon.name;
-            } else {
-              serializableTool.iconName = "LuBrainCircuit"; // Default icon
-            }
-
             // Remove the icon property which contains a React component that can't be serialized
             delete serializableTool.icon;
 
