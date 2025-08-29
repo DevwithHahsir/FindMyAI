@@ -9,7 +9,7 @@ const DEFAULT_TITLE =
 const DEFAULT_DESCRIPTION =
   "FindMyAI is a comprehensive AI tools directory (free & paid) for productivity and creativity. Explore categories and discover top AI tools.";
 const DEFAULT_IMAGE = "/findmyai.webp";
-const DEFAULT_URL = "https://findmyai-ed99f.web.app";
+const DEFAULT_URL = "https://ai-directory.web.app";
 
 export default function SEO({ title, description, image, url }) {
   const seo = {

@@ -227,7 +227,7 @@ export default function CategoryDetail() {
         description={`Discover the best ${
           category.name
         } AI tools in 2025. Compare free & paid options for ${category.name.toLowerCase()} tasks and boost your productivity with FindMyAI's curated selection.`}
-        url={`https://findmyai-ed99f.web.app/category/${categoryId}`}
+        url={`https://ai-directory.web.app/category/${categoryId}`}
       />
 
       <div className="back-button-container">

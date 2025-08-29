@@ -8,7 +8,7 @@ import tools from "../src/Data/tool.js";
 (async () => {
   try {
     const sitemap = new SitemapStream({
-      hostname: "https://findmyai-ed99f.web.app",
+      hostname: "https://ai-directory.web.app",
       cacheTime: 600000, // 10 minutes cache - helps with performance
     });
 

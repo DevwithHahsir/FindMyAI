@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
+
+.about-container {
+    background-color: #09090B;
+    color: #c9c9c9;
+    min-height: 100vh;
+    padding-bottom: 3rem;
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-top: 5rem;
+}
+
+.about-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.about-header p {
+    font-size: 1.2rem;
+    color: #c9c9c9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section {
+    margin-bottom: 4rem;
+}
+
+.about-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    border-bottom: 2px solid #1E1E3A;
+    padding-bottom: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.about-section p {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #c9c9c9;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.team-member {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.team-member-info {
+    padding: 1.5rem;
+}
+
+.team-member-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.team-member-info h4 {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.team-member-info p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.vision-mission {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.vision-mission-card {
+    background-color: #100E1B;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-top: 4px solid;
+    border-color: #4E43FF;
+}
+
+.vision-mission-card.vision {
+    border-image: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE) 1;
+}
+
+.vision-mission-card.mission {
+    border-image: linear-gradient(90deg, #7C5DFE, #9269FD, #AE79FC) 1;
+}
+
+.vision-mission-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.values-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.value-item {
+    background-color: #100E1B;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid;
+    border-image: linear-gradient(180deg, #4E43FF, #AE79FC) 1;
+}
+
+.value-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Developer Section Styling */
+.developer-profile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    background-color: #100E1B;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #1E1E3A;
+}
+
+.developer-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4E43FF 0%, #7C5DFE 50%, #AE79FC 100%);
+    padding: 1.5rem;
+}
+
+.developer-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.developer-info {
+    padding: 2rem;
+}
+
+.developer-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.developer-title {
+    color: #7C5DFE;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.developer-social {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.developer-social a {
+    color: #8e8e8e;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.developer-social a:hover {
+    color: #7C5DFE;
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .developer-profile {
+        grid-template-columns: 1fr;
+    }
+
+    .developer-image {
+        max-height: 300px;
+        padding: 1rem;
+    }
+}
+
+.value-item p {
+    font-size: 1rem;
+    color: #c9c9c9;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .about-header h1 {
+        font-size: 2rem;
+    }
+
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .vision-mission {
+        grid-template-columns: 1fr;
+    }
+}

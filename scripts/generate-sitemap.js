@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { SitemapStream, streamToPromise } from "sitemap";
 import { createWriteStream } from "fs";
 import path from "path";
@@ -17,6 +18,35 @@ import { fileURLToPath } from "url";
       changefreq: "daily",
       priority: 1.0,
       lastmod: new Date().toISOString().split("T")[0], // Today's date in YYYY-MM-DD format
+    });
+
+    // Add educational content pages
+    sitemap.write({
+      url: "/about",
+      changefreq: "monthly",
+      priority: 0.8,
+      lastmod: new Date().toISOString().split("T")[0],
+    });
+
+    sitemap.write({
+      url: "/contact",
+      changefreq: "monthly",
+      priority: 0.8,
+      lastmod: new Date().toISOString().split("T")[0],
+    });
+
+    sitemap.write({
+      url: "/how-to-use-ai",
+      changefreq: "weekly",
+      priority: 0.9,
+      lastmod: new Date().toISOString().split("T")[0],
+    });
+
+    sitemap.write({
+      url: "/mastering-prompts",
+      changefreq: "weekly",
+      priority: 0.9,
+      lastmod: new Date().toISOString().split("T")[0],
     });
 
     // End the stream before processing

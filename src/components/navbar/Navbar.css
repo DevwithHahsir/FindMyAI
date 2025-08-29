@@ -34,7 +34,7 @@
 
 .navbar-collapse {
 
-  margin-left: 20rem !important;
+  /* margin-left: 20rem !important; */
 }
 
 
@@ -87,6 +87,10 @@
   -ms-transition: color 0.3s ease;
   -o-transition: color 0.3s ease;
 }
+
+
+
+
 
 li a {
 

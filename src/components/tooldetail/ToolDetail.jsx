@@ -149,7 +149,7 @@ function ToolDetail() {
         )} AI tools of ${new Date().getFullYear()}. Learn features, pricing (free & paid), and how ${safeString(
           currentTool.name
         )} can boost productivity, startups, content creation, and business growth. Find trusted AI software on FindMyAI.`}
-        url={`https://findmyai-ed99f.web.app/tool/${encodeURIComponent(
+        url={`https://ai-directory.web.app/tool/${encodeURIComponent(
           safeString(currentTool.name)
         )}`}
       />

@@ -1,0 +1,3 @@
+// optimization-dependencies.txt
+// Run the following command to install dependencies:
+// npm install --save-dev terser vite-plugin-compression imagemin

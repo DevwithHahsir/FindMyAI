@@ -7,13 +7,23 @@ function Navbar() {
   const location = useLocation();
   const [activeItem, setActiveItem] = useState("home");
 
-  // Check if categories section is in view and update active state
+  // Set active item based on current path
   useEffect(() => {
     // Initialize based on current path
-    if (location.pathname === "/trending") {
-      setActiveItem("trending");
-    } else {
+    if (location.pathname === "/") {
       setActiveItem("home");
+    } else if (location.pathname === "/about") {
+      setActiveItem("about");
+    } else if (location.pathname === "/contact") {
+      setActiveItem("contact");
+    } else if (location.pathname === "/how-to-use-ai") {
+      setActiveItem("howto");
+    } else if (location.pathname === "/mastering-prompts") {
+      setActiveItem("prompts");
+    } else if (location.pathname.startsWith("/tool/")) {
+      // Keep previous state when viewing a tool
+    } else if (location.pathname.startsWith("/category/")) {
+      setActiveItem("categories");
     }
   }, [location.pathname]);
 
@@ -94,19 +104,13 @@ function Navbar() {
         {/* Nav Links */}
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a
+            <Link
               className={`nav-link ${activeItem === "home" ? "active" : ""}`}
-              href="#hero-section"
-              onClick={(e) => {
-                e.preventDefault();
-                setActiveItem("home");
-                document
-                  .getElementById("hero-section")
-                  .scrollIntoView({ behavior: "smooth" });
-              }}
+              to="/"
+              onClick={() => setActiveItem("home")}
             >
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a
@@ -115,13 +119,17 @@ function Navbar() {
               }`}
               href="#categories-section"
               onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById("categories-section")
-                  .scrollIntoView({ behavior: "smooth" });
-
-                // Explicitly set active state when clicking
-                setActiveItem("categories");
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  document
+                    .getElementById("categories-section")
+                    .scrollIntoView({ behavior: "smooth" });
+                  // Explicitly set active state when clicking
+                  setActiveItem("categories");
+                } else {
+                  // If we're not on the homepage, go to homepage then scroll to categories
+                  setActiveItem("categories");
+                }
               }}
             >
               Categories
@@ -134,17 +142,57 @@ function Navbar() {
               }`}
               href="#trending-section"
               onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById("trending-section")
-                  .scrollIntoView({ behavior: "smooth" });
-
-                // Explicitly set active state when clicking
-                setActiveItem("trending");
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  document
+                    .getElementById("trending-section")
+                    .scrollIntoView({ behavior: "smooth" });
+                  // Explicitly set active state when clicking
+                  setActiveItem("trending");
+                } else {
+                  // If we're not on the homepage, go to homepage then scroll to trending
+                  setActiveItem("trending");
+                }
               }}
             >
               Trending
             </a>
+          </li>
+          <li className="nav-item">
+            <Link
+              className={`nav-link ${activeItem === "howto" ? "active" : ""}`}
+              to="/how-to-use-ai"
+              onClick={() => setActiveItem("howto")}
+            >
+              How to Use AI
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              className={`nav-link ${activeItem === "prompts" ? "active" : ""}`}
+              to="/mastering-prompts"
+              onClick={() => setActiveItem("prompts")}
+            >
+              Mastering Prompts
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              className={`nav-link ${activeItem === "about" ? "active" : ""}`}
+              to="/about"
+              onClick={() => setActiveItem("about")}
+            >
+              About Us
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              className={`nav-link ${activeItem === "contact" ? "active" : ""}`}
+              to="/contact"
+              onClick={() => setActiveItem("contact")}
+            >
+              Contact
+            </Link>
           </li>
         </ul>
 

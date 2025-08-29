@@ -168,7 +168,7 @@ function Trending() {
 "
         description="Explore the top trending AI tools of 2025 with FindMyAI – your ultimate AI tools directory. Compare free & paid AI apps, software, and platforms for productivity, startups, content creation, and business growth. Discover the best AI software people trust in 2025.
 "
-        url="https://findmyai-ed99f.web.app"
+        url="https://ai-directory.web.app"
       />
 
       <main className="trending-section-main-container">

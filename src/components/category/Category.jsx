@@ -79,7 +79,7 @@ function Category() {
           title="FindMyAI – Discover Top AI Tools (Free & Paid) | Best AI Tools Directory 2025"
           description="Discover top AI tools in 2025 with FindMyAI. Browse free & paid tools by category to boost productivity, creativity, and growth.
 "
-          url="https://findmyai-ed99f.web.app"
+          url="https://ai-directory.web.app"
         />
       </div>
 

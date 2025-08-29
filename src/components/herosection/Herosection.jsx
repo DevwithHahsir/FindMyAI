@@ -27,7 +27,7 @@ function Herosection() {
       <SEO
         title="FindMyAI - Discover the Best AI Tools"
         description=" FindMyAI is a comprehensive AI tools directory (free & paid) for productivity and creativity. Explore categories and discover top AI tools."
-        url="https://findmyai-ed99f.web.app"
+        url="https://ai-directory.web.app"
       />
       {/* Discover Tools Button */}
       <div className="discover-tools">

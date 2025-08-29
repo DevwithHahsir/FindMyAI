@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Specify sitemap location
-Sitemap: https://findmyai-ed99f.web.app/sitemap.xml
+Sitemap: https://ai-directory.web.app/sitemap.xml
 
 # Improved crawl rate for better indexing
 Crawl-delay: 1

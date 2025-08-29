@@ -6,16 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/generate-sitemap.js",
+    "build:optimized": "npm run optimize:images && vite build --mode production && node scripts/generate-sitemap.js",
+    "optimize:images": "node scripts/optimizeImages.js",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "analyze": "vite build --mode production --outDir dist-analyze --ssrBuild"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
-    "bootstrap": "^5.3.7",
+    "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "firebase": "^12.1.0",
     "motion": "^12.23.12",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-helmet-async": "^2.0.5",
