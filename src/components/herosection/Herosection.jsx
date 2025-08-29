@@ -14,6 +14,12 @@ function Herosection() {
       .getElementById("categories-section")
       .scrollIntoView({ behavior: "smooth" });
   };
+
+  const scrollToTrending = () => {
+    document
+      .getElementById("trending-section")
+      .scrollIntoView({ behavior: "smooth" });
+  };
   // const categoriesSectionRef = useRef(null);
 
   return (
@@ -63,7 +69,7 @@ function Herosection() {
         </div>
 
         <div className="herosection-btns">
-          <button className="explore-btn">
+          <button className="explore-btn" onClick={scrollToTrending}>
             Explore Tools <IoIosArrowRoundForward />
           </button>
           <button className="browse-btn" onClick={scrollToCategories}>

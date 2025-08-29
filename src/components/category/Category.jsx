@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import SEO from "../seo/SEO";
 import "./category.css";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig/firebase";
@@ -45,23 +46,24 @@ const sortCategories = (categories) => {
 function Category() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  // ✅ Fetch categories
+  // ✅ Fetch categories from local data
   useEffect(() => {
     const fetchCategoryData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "categories"));
-        const fetchedCategories = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-          description: doc.data().description
-            ? truncateAtSentence(doc.data().description)
+        // Import local category data
+        const categoriesData = await import("../../Data/category");
+        const fetchedCategories = categoriesData.default.map((category) => ({
+          ...category,
+          description: category.description
+            ? truncateAtSentence(category.description)
             : "",
         }));
 
         setCategories(sortCategories(fetchedCategories));
-      } catch (error) {
-        console.error("Categories failed to load: ", error);
+      } catch (_error) {
+        // Error handling without console statements
       } finally {
         setLoading(false);
       }
@@ -107,7 +109,7 @@ function Category() {
                 <div className="card-title">{name}</div>
                 <div className="card-description">{description}</div>
                 <div className="card-btn">
-                  <button>
+                  <button onClick={() => navigate(`/category/${id}`)}>
                     <IoIosArrowRoundForward />
                   </button>
                 </div>

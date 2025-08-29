@@ -2,6 +2,8 @@ import { SitemapStream, streamToPromise } from "sitemap";
 import { createWriteStream } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import categories from "../src/Data/category.js";
+import tools from "../src/Data/tool.js";
 
 (async () => {
   try {
@@ -10,14 +12,42 @@ import { fileURLToPath } from "url";
       cacheTime: 600000, // 10 minutes cache - helps with performance
     });
 
-    // Only add actual routes, not in-page sections
-    // Main page includes all sections (hero, categories, trending)
+    // Current date in ISO format for lastmod
+    const today = new Date().toISOString();
+
+    // Add homepage
     sitemap.write({
       url: "/",
       changefreq: "daily",
       priority: 1.0,
-      lastmod: new Date().toISOString().split("T")[0], // Today's date in YYYY-MM-DD format
+      lastmod: today,
     });
+
+    // Add all category pages
+    if (categories && categories.length > 0) {
+      categories.forEach((category) => {
+        sitemap.write({
+          url: `/category/${category.id}`,
+          changefreq: "weekly",
+          priority: 0.8,
+          lastmod: today,
+        });
+      });
+    }
+
+    // Add all tool pages
+    if (tools && tools.length > 0) {
+      tools.forEach((tool) => {
+        if (tool.name) {
+          sitemap.write({
+            url: `/tool/${encodeURIComponent(tool.name)}`,
+            changefreq: "weekly",
+            priority: 0.7,
+            lastmod: today,
+          });
+        }
+      });
+    }
 
     // End the stream before processing
     sitemap.end();
@@ -41,10 +71,12 @@ import { fileURLToPath } from "url";
     writeStream.write(prettyXml);
     writeStream.end();
 
-    // Sitemap generated successfully
-  } catch (_err) {
+    // Success message (commented out to avoid console output)
+    // console.log(`✅ Enhanced sitemap generated successfully at: ${filePath}`);
+  } catch {
     // Error handling without console statements
   } finally {
-    // Process completed
+    // Process completed message (commented out to avoid console output)
+    // console.log("📊 Sitemap generation process completed");
   }
 })();

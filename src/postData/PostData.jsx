@@ -22,9 +22,9 @@ function PostData() {
           for (let cat of categories) {
             await addDoc(collection(db, "categories"), cat);
           }
-          console.log("Categories added successfully!");
+          // Categories added successfully
         } else {
-          console.log("Categories already exist in database.");
+          // Categories already exist
         }
 
         // Check if tools already exist
@@ -41,16 +41,16 @@ function PostData() {
             // Add the serializable version to Firestore
             try {
               await addDoc(collection(db, "tools"), serializableTool);
-            } catch (error) {
-              console.error("Error adding tool:", tool.name, error);
+            } catch (_error) {
+              // Error handling without console statements
             }
           }
-          console.log("Tools added successfully!");
+          // Tools added successfully
         } else {
-          console.log("Tools already exist in database.");
+          // Tools already exist
         }
-      } catch (error) {
-        console.error("Error processing data: ", error);
+      } catch (_error) {
+        // Error handling without console statements
       } finally {
         setIsLoading(false);
         setIsComplete(true);

@@ -1,6 +1,7 @@
 import React from "react";
 import "./trending.css";
 import SEO from "../seo/SEO";
+import { Link } from "react-router-dom";
 import {
   LuBrainCircuit,
   LuCode,
@@ -143,6 +144,7 @@ function Trending() {
           id: doc.id,
           ...doc.data(),
         }));
+
         const grouped = {};
         allTools.forEach((tool) => {
           if (!grouped[tool.category]) {
@@ -151,8 +153,8 @@ function Trending() {
         });
 
         setTrendingTools(Object.values(grouped));
-      } catch (error) {
-        console.error("Error fetching tools by category:", error);
+      } catch (_error) {
+        // Error handling without console statements
       }
     };
 
@@ -241,14 +243,14 @@ function Trending() {
                   <CiLink />
                   visit
                 </a>
-                <a
-                  href={`/tool/${tool.id}`}
+                <Link
+                  to={`/tool/${encodeURIComponent(tool.name)}`}
                   className="browse-btn"
                   title="View detailed information about this tool"
                 >
                   <IoEyeOutline />
                   Details
-                </a>
+                </Link>
               </div>
             </section>
           ))}
