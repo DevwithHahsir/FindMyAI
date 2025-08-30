@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import emailjs from "@emailjs/browser";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebaseConfig/firebase";
 import "./ContactUs.css";
 import { BsEnvelope, BsQuestionCircle, BsLightbulb } from "react-icons/bs";
 
 const ContactUs = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,17 +19,32 @@ const ContactUs = () => {
     submitted: false,
     success: false,
     message: "",
+    loading: false,
   });
 
+  // Initialize EmailJS once when component loads
+  useEffect(() => {
+    emailjs.init("zZGHEXF6pxPq1Pl0C");
+  }, []);
+
   const handleChange = (e) => {
+    // Extract the base name without from_ prefix
+    const fieldName = e.target.name.replace("from_", "");
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [fieldName]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Set loading state
+    setFormStatus({
+      ...formStatus,
+      loading: true,
+    });
 
     // Basic form validation
     if (!formData.name || !formData.email || !formData.message) {
@@ -33,6 +52,7 @@ const ContactUs = () => {
         submitted: true,
         success: false,
         message: "Please fill out all required fields",
+        loading: false,
       });
       return;
     }
@@ -44,34 +64,109 @@ const ContactUs = () => {
         submitted: true,
         success: false,
         message: "Please enter a valid email address",
+        loading: false,
       });
       return;
     }
 
-    // In a real implementation, you would send this data to your backend
-    // For now, we'll simulate a successful submission
-    setFormStatus({
-      submitted: true,
-      success: true,
-      message: "Thank you for your message! We will get back to you soon.",
-    });
+    // Hidden field for recipient email is already set in the form
 
-    // Clear the form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+    // Store the form submission in Firebase Firestore
+    const contactSubmission = {
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject || "General Inquiry",
+      message: formData.message,
+      timestamp: new Date().toISOString(),
+      recipientEmail: "hashirch819@gmail.com",
+      emailProvider: "EmailJS",
+      serviceId: "service_2g06ic9",
+      attemptedDelivery: true,
+    };
 
-    // Reset form status after 5 seconds
-    setTimeout(() => {
+    // Save to Firestore first
+    try {
+      // Add a new document to the "contact_submissions" collection
+      addDoc(collection(db, "contact_submissions"), contactSubmission)
+        .then(() => {
+          console.log("Contact form submission saved to Firestore");
+
+          // Then send email using EmailJS
+          emailjs
+            .sendForm(
+              "service_2g06ic9", // EmailJS service ID
+              "template_srvucwm", // EmailJS template ID
+              form.current, // Using the form reference directly
+              "zZGHEXF6pxPq1Pl0C" // EmailJS public key
+            )
+            .then(() => {
+              // Handle success
+              setFormStatus({
+                submitted: true,
+                success: true,
+                message:
+                  "Thank you for your message! We will get back to you soon.",
+                loading: false,
+              });
+
+              // Clear the form
+              setFormData({
+                name: "",
+                email: "",
+                subject: "",
+                message: "",
+              });
+
+              // Reset form status after 5 seconds
+              setTimeout(() => {
+                setFormStatus({
+                  submitted: false,
+                  success: false,
+                  message: "",
+                  loading: false,
+                });
+              }, 5000);
+            })
+            .catch((error) => {
+              // If email sending fails, still consider it a success since we saved to Firestore
+              console.error("Failed to send email:", error);
+              setFormStatus({
+                submitted: true,
+                success: true,
+                message:
+                  "Thank you for your message! Your submission has been recorded.",
+                loading: false,
+              });
+
+              // Clear the form
+              setFormData({
+                name: "",
+                email: "",
+                subject: "",
+                message: "",
+              });
+            });
+        })
+        .catch((error) => {
+          console.error("Error saving contact form submission:", error);
+          setFormStatus({
+            submitted: true,
+            success: false,
+            message:
+              "Sorry, there was a problem sending your message. Please try again later.",
+            loading: false,
+          });
+        });
+    } catch (error) {
+      console.error("Failed to process form submission:", error);
       setFormStatus({
-        submitted: false,
+        submitted: true,
         success: false,
-        message: "",
+        message:
+          "Sorry, there was a problem sending your message. Please try again later.",
+        loading: false,
       });
-    }, 5000);
+    }
   };
 
   return (
@@ -92,7 +187,8 @@ const ContactUs = () => {
         <div className="contact-header">
           <h1>Contact Us</h1>
           <p>
-            Have questions, feedback, or suggestions? We'd love to hear from you!
+            Have questions, feedback, or suggestions? We'd love to hear from
+            you!
           </p>
         </div>
 
@@ -108,13 +204,19 @@ const ContactUs = () => {
               </div>
             )}
 
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form" ref={form} onSubmit={handleSubmit}>
+              <input
+                type="hidden"
+                id="contact_to_email"
+                name="to_email"
+                value="hashirch819@gmail.com"
+              />
               <div className="form-group">
                 <label htmlFor="name">Name *</label>
                 <input
                   type="text"
                   id="name"
-                  name="name"
+                  name="from_name"
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -126,7 +228,7 @@ const ContactUs = () => {
                 <input
                   type="email"
                   id="email"
-                  name="email"
+                  name="from_email"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -141,12 +243,14 @@ const ContactUs = () => {
                   value={formData.subject}
                   onChange={handleChange}
                 >
-                  <option value="">Select a subject</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="suggestion">Tool Suggestion</option>
-                  <option value="feedback">Feedback</option>
-                  <option value="bug">Report an Issue</option>
-                  <option value="business">Business Opportunity</option>
+                  <option value="General Inquiry">Select a subject</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Tool Suggestion">Tool Suggestion</option>
+                  <option value="Feedback">Feedback</option>
+                  <option value="Report an Issue">Report an Issue</option>
+                  <option value="Business Opportunity">
+                    Business Opportunity
+                  </option>
                 </select>
               </div>
 
@@ -161,8 +265,12 @@ const ContactUs = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="submit-btn">
-                Send Message
+              <button
+                type="submit"
+                className="submit-btn"
+                disabled={formStatus.loading}
+              >
+                {formStatus.loading ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
@@ -176,7 +284,9 @@ const ContactUs = () => {
                 <h3>Email Us</h3>
                 <p>For general inquiries, please email us at:</p>
                 <p>
-                  <a href="mailto:info@findmyai.com">info@findmyai.com</a>
+                  <a href="mailto:hashirch819@gmail.com">
+                    hashirch819@gmail.com
+                  </a>
                 </p>
               </div>
             </div>
@@ -189,7 +299,9 @@ const ContactUs = () => {
                 <h3>Support</h3>
                 <p>Need help with finding the right AI tool?</p>
                 <p>
-                  <a href="mailto:support@findmyai.com">support@findmyai.com</a>
+                  <a href="mailto:hashirch819@gmail.com">
+                    hashirch819@gmail.com
+                  </a>
                 </p>
               </div>
             </div>
@@ -203,8 +315,8 @@ const ContactUs = () => {
                 <p>Know an AI tool that should be in our directory?</p>
                 <p>
                   Let us know through our contact form or email us directly at{" "}
-                  <a href="mailto:suggestions@findmyai.com">
-                    suggestions@findmyai.com
+                  <a href="mailto:hashirch819@gmail.com">
+                    hashirch819@gmail.com
                   </a>
                 </p>
               </div>
@@ -220,8 +332,8 @@ const ContactUs = () => {
               <h3>How can I suggest an AI tool for your directory?</h3>
               <p>
                 You can suggest a new tool through our contact form by selecting
-                "Tool Suggestion" from the subject dropdown, or email us directly
-                at suggestions@findmyai.com with details about the tool.
+                "Tool Suggestion" from the subject dropdown, or email us
+                directly at hashirch819@gmail.com with details about the tool.
               </p>
             </div>
 
@@ -230,7 +342,7 @@ const ContactUs = () => {
               <p>
                 Yes, we do! If you're interested in partnering with FindMyAI or
                 advertising on our platform, please reach out to us at
-                partnerships@findmyai.com for more information.
+                hashirch819@gmail.com for more information.
               </p>
             </div>
 
@@ -238,9 +350,9 @@ const ContactUs = () => {
               <h3>How are tools selected for your directory?</h3>
               <p>
                 We carefully evaluate each AI tool based on its functionality,
-                user experience, reliability, and value proposition. We strive to
-                include a diverse range of tools that serve different needs and
-                use cases.
+                user experience, reliability, and value proposition. We strive
+                to include a diverse range of tools that serve different needs
+                and use cases.
               </p>
             </div>
 
@@ -248,7 +360,8 @@ const ContactUs = () => {
               <h3>How quickly do you respond to inquiries?</h3>
               <p>
                 We aim to respond to all inquiries within 48 hours. For urgent
-                matters, please indicate this in the subject line of your message.
+                matters, please indicate this in the subject line of your
+                message.
               </p>
             </div>
           </div>

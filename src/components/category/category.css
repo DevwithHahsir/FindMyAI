@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
 
 
+.category-wrapper {
+    background-color: #09090B;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 2rem;
+    margin-bottom: 0;
+}
+
 .category-main-container {
     margin-top: 3rem;
     height: max-content;
@@ -105,11 +113,17 @@
 .card-btn button:hover {
     background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
     border-color: #9269FD;
+    will-change: transform;
+    transform: scale(1.05);
+    transition: transform 0.2s ease-out;
 }
 
-
-
-
+/* Fix empty ruleset */
+.card-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 
 @media (max-width:900px) {
 
@@ -140,7 +154,10 @@
         text-align: left;
     }
 
-    .card-btn {}
+    /* Adjusted card button for mobile */
+    .card-btn button {
+        padding: 0.3rem;
+    }
 
 
 

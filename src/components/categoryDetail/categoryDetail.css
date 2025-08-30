@@ -343,7 +343,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .tools-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
@@ -355,12 +355,14 @@
     .category-tools-container h2 {
         font-size: 1.5rem;
     }
+
 }
 
 @media (max-width: 480px) {
     .tools-grid {
         grid-template-columns: 1fr;
     }
+    
 
     .tool-buttons {
         flex-direction: column;

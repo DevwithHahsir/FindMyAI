@@ -119,12 +119,12 @@ function Herosection() {
         </div>
       </section>
 
-      <div id="categories-section">
+      <section id="categories-section" className="section-container">
         <Category />
-      </div>
-      <div id="trending-section">
+      </section>
+      <section id="trending-section" className="section-container">
         <Trending />
-      </div>
+      </section>
     </main>
   );
 }

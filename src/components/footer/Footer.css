@@ -6,6 +6,9 @@
     padding: 4rem 0 2rem;
     margin-top: 0;
     border-top: 1px solid #1E1E3A;
+    position: relative;
+    z-index: 0;
+    clear: both;
 }
 
 .footer-container {

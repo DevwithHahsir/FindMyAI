@@ -1,12 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import SEO from "../seo/SEO";
 import "./category.css";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebaseConfig/firebase";
+// Import Firebase services only when needed
+const db = lazy(() =>
+  import("../../firebaseConfig/firebase").then((module) => ({
+    default: module.db,
+  }))
+);
 
 // ✅ Utility function (moved outside component to avoid re-creation)
 const truncateAtSentence = (text, maxLength = 100) => {
@@ -48,32 +52,74 @@ function Category() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // ✅ Fetch categories from local data
+  // ✅ Fetch categories from local data with performance optimizations
   useEffect(() => {
+    let isMounted = true;
+
     const fetchCategoryData = async () => {
       try {
-        // Import local category data
-        const categoriesData = await import("../../Data/category");
-        const fetchedCategories = categoriesData.default.map((category) => ({
-          ...category,
-          description: category.description
-            ? truncateAtSentence(category.description)
-            : "",
-        }));
+        // Use dynamic import with priority hints
+        const categoriesDataPromise = import(
+          /* webpackPreload: true */ "../../Data/category"
+        );
 
-        setCategories(sortCategories(fetchedCategories));
+        // Start processing after a short delay to not block main thread during initial render
+        setTimeout(async () => {
+          const categoriesData = await categoriesDataPromise;
+
+          if (!isMounted) return;
+
+          // Process in chunks to avoid long tasks
+          const processInChunks = (items, chunkSize = 10) => {
+            let index = 0;
+
+            const processNextChunk = () => {
+              const chunk = items.slice(index, index + chunkSize);
+              index += chunkSize;
+
+              if (chunk.length > 0 && isMounted) {
+                const processedChunk = chunk.map((category) => ({
+                  ...category,
+                  description: category.description
+                    ? truncateAtSentence(category.description)
+                    : "",
+                }));
+
+                setCategories((prevCategories) =>
+                  sortCategories([...prevCategories, ...processedChunk])
+                );
+
+                if (index < items.length) {
+                  // Continue with next chunk in the next frame
+                  requestAnimationFrame(processNextChunk);
+                } else {
+                  setLoading(false);
+                }
+              }
+            };
+
+            processNextChunk();
+          };
+
+          processInChunks(categoriesData.default);
+        }, 100);
       } catch (_error) {
-        // Error handling without console statements
-      } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchCategoryData();
+
+    // Cleanup
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
-    <div>
+    <div className="category-wrapper">
       <div className="seo">
         <SEO
           title="FindMyAI – Discover Top AI Tools (Free & Paid) | Best AI Tools Directory 2025"
@@ -104,12 +150,16 @@ function Category() {
                   <div
                     className="card-icon"
                     dangerouslySetInnerHTML={{ __html: icon }}
+                    loading="lazy"
                   />
                 )}
                 <div className="card-title">{name}</div>
                 <div className="card-description">{description}</div>
                 <div className="card-btn">
-                  <button onClick={() => navigate(`/category/${id}`)}>
+                  <button
+                    onClick={() => navigate(`/category/${id}`)}
+                    aria-label={`View ${name} category`}
+                  >
                     <IoIosArrowRoundForward />
                   </button>
                 </div>

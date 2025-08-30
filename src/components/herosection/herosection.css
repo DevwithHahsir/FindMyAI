@@ -2,7 +2,15 @@
 
 .herosection-main-container {
      background-color: #100E1B;
-     height: 100vh;
+     min-height: 100vh;
+     overflow: visible;
+}
+
+.section-container {
+     position: relative;
+     z-index: 1;
+     margin: 0;
+     padding: 0;
 }
 
 /* Hero header styles */
