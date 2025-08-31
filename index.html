@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="TiDak_Mp552rvozMS_GHZf4nnXayC05YnxdqseuWq-M" />
+  <!-- React patch script to fix "Cannot read properties of undefined (reading 'createContext')" error -->
+  <script src="/react-patch.js"></script>
   <!-- DNS prefetching for external resources -->
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
@@ -62,6 +64,7 @@
 
 <body>
   <div id="root"></div>
+  <!-- Make sure React is loaded before our application code -->
   <script type="module" src="/src/main.jsx"></script>
   <script src="/navbar-fix.js" defer></script>
   <script src="/image-optimization.js" defer></script>

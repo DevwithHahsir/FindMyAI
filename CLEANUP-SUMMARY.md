@@ -6,6 +6,7 @@
 
    - Removed `findMyAI/` (duplicate Firebase hosting folder)
    - Removed `dataconnect/` (unused Firebase Data Connect files)
+   - Removed `dist/` (build output folder that can be regenerated)
 
 2. **Testing and Setup Files:**
 
@@ -34,7 +35,6 @@
 1. **Core Application Files:**
 
    - All source code in `src/`
-   - The optimized build in `dist/`
    - Essential configuration files
 
 2. **Optimization Scripts:**
@@ -62,3 +62,8 @@
 - Successfully verified that the project builds after cleanup
 
 This cleanup has removed unnecessary files while preserving all essential components needed for your application to function properly.
+
+## Update History
+
+- Initial cleanup: Removed duplicate files, test files, and documentation
+- Latest update: Removed dist folder (build output) that can be regenerated

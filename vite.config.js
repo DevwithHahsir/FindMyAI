@@ -67,8 +67,7 @@ export default defineConfig({
           // Create more fine-grained chunks
           if (id.includes("node_modules")) {
             if (id.includes("react")) {
-              // Split React packages for better caching
-              if (id.includes("react-dom")) return "vendor-react-dom";
+              // Ensure all React packages go in one chunk
               return "vendor-react";
             }
             if (id.includes("bootstrap") || id.includes("react-icons"))
@@ -111,6 +110,11 @@ export default defineConfig({
   // Enable deep optimization
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom", "react-helmet-async"],
+  },
+  define: {
+    // Define NODE_ENV for both production and development
+    "process.env.NODE_ENV": JSON.stringify("development"),
+    global: "window", // This helps with some libraries
   },
   server: {
     open: true,
