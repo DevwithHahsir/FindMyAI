@@ -1,3 +1,4 @@
+
 name: Deploy to Firebase Hosting on merge
 
 on:
@@ -14,11 +15,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Setup Node.js (you can change version if needed, e.g., 18.x)
+      # Setup Node.js (Firebase CLI now requires >=20)
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
+
+      # Cache node_modules for faster builds
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       # Install dependencies
       - name: Install dependencies
@@ -29,7 +39,7 @@ jobs:
         run: npm run build
 
       # Deploy to Firebase Hosting
-      - name: Deploy to Firebase
+      - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
