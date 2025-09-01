@@ -7,17 +7,20 @@
   <title>FindMyAI – Discover Top AI Tools (Free & Paid) | Best AI Tools Directory 2025</title>
 
   <!-- SEO Meta -->
-  <meta name="description" content="FindMyAI is a comprehensive AI tools directory (free & paid) for productivity and creativity. Explore categories and discover top AI tools." />
-  <meta name="keywords" content="AI tools, artificial intelligence, productivity tools, AI directory, free AI tools, paid AI tools, FindMyAI" />
+  <meta name="description"
+    content="FindMyAI is a comprehensive AI tools directory (free & paid) for productivity and creativity. Explore categories and discover top AI tools." />
+  <meta name="keywords"
+    content="AI tools, artificial intelligence, productivity tools, AI directory, free AI tools, paid AI tools, FindMyAI" />
   <meta name="author" content="FindMyAI" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#ffffff">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ai-directory.web.app" />
   <meta property="og:title" content="FindMyAI – Discover Top AI Tools" />
-  <meta property="og:description" content="Comprehensive directory of free & paid AI tools for productivity and creativity." />
+  <meta property="og:description"
+    content="Comprehensive directory of free & paid AI tools for productivity and creativity." />
   <meta property="og:image" content="/findmyai.webp" />
   <meta property="og:site_name" content="FindMyAI" />
 
@@ -25,7 +28,8 @@
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://ai-directory.web.app" />
   <meta property="twitter:title" content="FindMyAI – Discover Top AI Tools" />
-  <meta property="twitter:description" content="Comprehensive directory of free & paid AI tools for productivity and creativity." />
+  <meta property="twitter:description"
+    content="Comprehensive directory of free & paid AI tools for productivity and creativity." />
   <meta property="twitter:image" content="/findmyai.webp" />
 
   <!-- Canonical -->
@@ -43,20 +47,89 @@
   <!-- Google Site Verification -->
   <meta name="google-site-verification" content="TiDak_Mp552rvozMS_GHZf4nnXayC05YnxdqseuWq-M" />
 
+  <!-- React Context Fix - MUST BE FIRST SCRIPT -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Create a comprehensive React mock that provides createContext
+      const ReactMock = {
+        createContext: function (defaultValue) {
+          const context = {
+            $$typeof: Symbol.for('react.context'),
+            _calculateChangedBits: null,
+            _currentValue: defaultValue,
+            _currentValue2: defaultValue,
+            _threadCount: 0,
+            Provider: function (props) {
+              return props.children;
+            },
+            Consumer: function (props) {
+              return typeof props.children === 'function'
+                ? props.children(defaultValue)
+                : props.children;
+            },
+            _context: null,
+            displayName: 'Context'
+          };
+          context._context = context;
+          return context;
+        },
+        createElement: function (type, props) {
+          return {
+            type: type,
+            props: props || {},
+            key: null,
+            ref: null,
+            $$typeof: Symbol.for('react.element')
+          };
+        },
+        Component: function (props, context, updater) {
+          this.props = props;
+          this.context = context;
+          this.refs = {};
+          this.updater = updater || {};
+        },
+        PureComponent: function (props, context, updater) {
+          this.props = props;
+          this.context = context;
+          this.refs = {};
+          this.updater = updater || {};
+        },
+        Fragment: function (props) {
+          return props.children;
+        },
+        version: '18.0.0-mock'
+      };
+
+      // Make React available globally immediately
+      if (typeof window !== 'undefined') {
+        window.React = ReactMock;
+
+        // Also define it for any variable name that might be used
+        window.t = ReactMock;  // In case 't' is the minified variable name
+        window.r = ReactMock;  // Common minified names
+        window.e = ReactMock;
+
+        // For module systems
+        if (typeof global !== 'undefined') {
+          global.React = ReactMock;
+        }
+      }
+    })();
+  </script>
+
   <!-- AdSense -->
-  <meta name="google-adsense-account" content="ca-pub-9084826846207690">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9084826846207690" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9084826846207690"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
   <div id="root"></div>
 
-  <!-- Vite will replace this with the correct hashed JS/CSS after build -->
+  <!-- Vite entry point -->
   <script type="module" src="/src/main.jsx"></script>
 
-  <!-- Optional custom scripts -->
-  <script src="/navbar-fix.js" defer></script>
-  <script src="/image-optimization.js" defer></script>
 </body>
 
 </html>

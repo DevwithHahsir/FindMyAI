@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillMenuButtonFill } from "react-icons/bs";
+import InstantSearch from "../search/InstantSearch";
 import "./Navbar.css";
 
 function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState("home");
 
   // Set active item based on current path
@@ -77,6 +79,30 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname, activeItem]);
 
+  // Helper function to handle navigation to sections
+  const handleSectionClick = (sectionId, activeItemName) => {
+    if (location.pathname === "/") {
+      // If already on home page, just scroll to section
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+        setActiveItem(activeItemName);
+      }
+    } else {
+      // If on another page, navigate to home first, then scroll
+      setActiveItem(activeItemName);
+      navigate("/", { replace: true });
+
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       {/* Logo/Brand */}
@@ -113,50 +139,38 @@ function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <a
-              className={`nav-link ${
+            <button
+              type="button"
+              className={`nav-link btn btn-link ${
                 activeItem === "categories" ? "active" : ""
               }`}
-              href="#categories-section"
-              onClick={(e) => {
-                if (location.pathname === "/") {
-                  e.preventDefault();
-                  document
-                    .getElementById("categories-section")
-                    .scrollIntoView({ behavior: "smooth" });
-                  // Explicitly set active state when clicking
-                  setActiveItem("categories");
-                } else {
-                  // If we're not on the homepage, go to homepage then scroll to categories
-                  setActiveItem("categories");
-                }
+              onClick={() =>
+                handleSectionClick("categories-section", "categories")
+              }
+              style={{
+                border: "none",
+                background: "none",
+                textDecoration: "none",
               }}
             >
               Categories
-            </a>
+            </button>
           </li>
           <li className="nav-item">
-            <a
-              className={`nav-link ${
+            <button
+              type="button"
+              className={`nav-link btn btn-link ${
                 activeItem === "trending" ? "active" : ""
               }`}
-              href="#trending-section"
-              onClick={(e) => {
-                if (location.pathname === "/") {
-                  e.preventDefault();
-                  document
-                    .getElementById("trending-section")
-                    .scrollIntoView({ behavior: "smooth" });
-                  // Explicitly set active state when clicking
-                  setActiveItem("trending");
-                } else {
-                  // If we're not on the homepage, go to homepage then scroll to trending
-                  setActiveItem("trending");
-                }
+              onClick={() => handleSectionClick("trending-section", "trending")}
+              style={{
+                border: "none",
+                background: "none",
+                textDecoration: "none",
               }}
             >
               Trending
-            </a>
+            </button>
           </li>
           <li className="nav-item">
             <Link
@@ -196,20 +210,10 @@ function Navbar() {
           </li>
         </ul>
 
-        {/* Search Bar */}
-        <form className="d-flex mx-auto searchbar-container">
-          <div className="input-group">
-            <input
-              className="form-control"
-              type="search"
-              placeholder="Search AI tools..."
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-primary" type="submit">
-              <i className="bi bi-search"></i>
-            </button>
-          </div>
-        </form>
+        {/* Instant Search Bar */}
+        <div className="d-flex mx-auto searchbar-container">
+          <InstantSearch />
+        </div>
 
         {/* User Authentication */}
       </div>

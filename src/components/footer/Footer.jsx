@@ -35,28 +35,28 @@ const Footer = () => {
             </p>
             <div className="footer-social">
               <a
-                href="https://facebook.com"
+                href="https://www.upwork.com/freelancers/~0107cd908b865a023a?viewMode=1&s=1110580755057594368"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <BsFacebook className="social-icon" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://www.fiverr.com/hahsirch?public_mode=true"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <BsTwitter className="social-icon" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/hashirmehboob/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <BsLinkedin className="social-icon" />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/DevwithHahsir"
                 target="_blank"
                 rel="noopener noreferrer"
               >

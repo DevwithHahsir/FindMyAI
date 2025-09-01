@@ -4,129 +4,98 @@ import viteCompression from "vite-plugin-compression";
 import viteImagemin from "vite-plugin-imagemin";
 import { visualizer } from "rollup-plugin-visualizer";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
-    viteCompression({
-      algorithm: "gzip", // Enable gzip compression
-      threshold: 10240, // Only compress files larger than 10kb
-    }),
-    viteCompression({
-      algorithm: "brotliCompress", // Also enable Brotli compression
-      threshold: 10240,
-    }),
+    react(), // React plugin
+    viteCompression({ algorithm: "gzip", threshold: 10240 }),
+    viteCompression({ algorithm: "brotliCompress", threshold: 10240 }),
     viteImagemin({
-      gifsicle: {
-        optimizationLevel: 7,
-        interlaced: false,
-      },
-      optipng: {
-        optimizationLevel: 7,
-      },
-      mozjpeg: {
-        quality: 80,
-      },
-      pngquant: {
-        quality: [0.7, 0.9],
-        speed: 4,
-      },
+      gifsicle: { optimizationLevel: 7, interlaced: false },
+      optipng: { optimizationLevel: 7 },
+      mozjpeg: { quality: 80 },
+      pngquant: { quality: [0.7, 0.9], speed: 4 },
       svgo: {
         plugins: [
-          {
-            name: "removeViewBox",
-            active: false,
-          },
-          {
-            name: "removeEmptyAttrs",
-            active: false,
-          },
+          { name: "removeViewBox", active: false },
+          { name: "removeEmptyAttrs", active: false },
         ],
       },
     }),
     visualizer({
       filename: "./dist/stats.html",
-      open: false, // Set to true to automatically open the report after build
+      open: false,
       gzipSize: true,
       brotliSize: true,
     }),
   ],
+
   build: {
-    minify: "terser", // Use Terser for better minification
+    minify: false, // Temporarily disable to debug React context issue
+    // minify: "terser",
     terserOptions: {
       compress: {
-        drop_console: true, // Remove console logs in production
+        drop_console: true,
         drop_debugger: true,
         ecma: 2020,
-        passes: 2, // Multiple passes for better optimization
+        passes: 2,
       },
     },
     rollupOptions: {
+      external: () => {
+        // Don't externalize React - keep it bundled but ensure proper context
+        return false;
+      },
       output: {
-        manualChunks: (id) => {
-          // Create more fine-grained chunks
-          if (id.includes("node_modules")) {
-            if (id.includes("react")) {
-              // Ensure all React packages go in one chunk
-              return "vendor-react";
-            }
-            if (id.includes("bootstrap") || id.includes("react-icons"))
-              return "vendor-ui";
-            if (id.includes("firebase")) return "vendor-firebase";
-            return "vendor"; // other dependencies
-          }
-          // Group application code by features
-          if (id.includes("/components/")) {
-            if (id.includes("/herosection/")) return "component-hero";
-            if (id.includes("/navbar/")) return "component-navbar";
-            return "components";
-          }
-        },
+        // ✅ Removed aggressive manualChunks to prevent React context issues
         chunkFileNames: "assets/js/[name].[hash].js",
         entryFileNames: "assets/js/[name].[hash].js",
         assetFileNames: (assetInfo) => {
-          // Organize assets by file type for better caching
-          const extType = assetInfo.name.split(".").at(1);
-          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+          const extType = assetInfo.name.split(".").pop();
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType))
             return `assets/images/[name].[hash][extname]`;
-          }
-          if (/woff|woff2|eot|ttf|otf/i.test(extType)) {
+          if (/woff|woff2|eot|ttf|otf/i.test(extType))
             return `assets/fonts/[name].[hash][extname]`;
-          }
-          if (/css/i.test(extType)) {
-            return `assets/css/[name].[hash][extname]`;
-          }
+          if (/css/i.test(extType)) return `assets/css/[name].[hash][extname]`;
           return `assets/[name].[hash][extname]`;
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // Increase the warning limit
-    sourcemap: false, // Disable sourcemaps in production for smaller files
+    chunkSizeWarningLimit: 1000,
+    sourcemap: false,
     cssCodeSplit: true,
-    assetsInlineLimit: 4096, // Inline small assets (< 4kb)
+    assetsInlineLimit: 4096,
     emptyOutDir: true,
-    reportCompressedSize: true, // Report gzip size in the build output
+    reportCompressedSize: true,
   },
-  // Enable deep optimization
+
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom", "react-helmet-async"],
   },
-  define: {
-    // Define NODE_ENV for both production and development
-    "process.env.NODE_ENV": JSON.stringify("development"),
-    global: "window", // This helps with some libraries
+
+  resolve: {
+    alias: {
+      react: "react",
+      "react-dom": "react-dom",
+    },
   },
+
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("production"),
+    global: "window",
+    React: "window.React",
+    t: "window.React", // Common minified variable names
+    r: "window.React",
+    e: "window.React",
+  },
+
   server: {
     open: true,
     cors: true,
-    headers: {
-      "Cache-Control": "no-store", // Better for development
-    },
+    headers: { "Cache-Control": "no-store" },
   },
+
   preview: {
     port: 4173,
-    headers: {
-      "Cache-Control": "public, max-age=31536000", // Long cache for production preview
-    },
+    headers: { "Cache-Control": "public, max-age=31536000" },
   },
 });

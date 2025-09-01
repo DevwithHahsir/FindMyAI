@@ -1,6 +1,5 @@
-// Import React explicitly to ensure it's available
-import * as React from "react";
-import { lazy, Suspense } from "react";
+// Standard imports for better compatibility
+import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import "./fonts.css";
