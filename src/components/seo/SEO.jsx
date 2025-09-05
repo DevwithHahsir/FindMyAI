@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { normalizeCanonicalURL } from "../../utils/urlUtils";
 
 // Default metadata (used if no props are provided).
 // Title length is kept around 60 chars for best SEO:contentReference[oaicite:7]{index=7}.
@@ -9,14 +10,14 @@ const DEFAULT_TITLE =
 const DEFAULT_DESCRIPTION =
   "FindMyAI is a comprehensive AI tools directory (free & paid) for productivity and creativity. Explore categories and discover top AI tools.";
 const DEFAULT_IMAGE = "/findmyai.webp";
-const DEFAULT_URL = "https://ai-directory.web.app";
+const DEFAULT_URL = "https://findmyai.org";
 
 export default function SEO({ title, description, image, url }) {
   const seo = {
     title: title || DEFAULT_TITLE,
     description: description || DEFAULT_DESCRIPTION,
     image: image || DEFAULT_IMAGE,
-    url: url || DEFAULT_URL,
+    url: normalizeCanonicalURL(url) || DEFAULT_URL,
   };
 
   return (
@@ -24,6 +25,7 @@ export default function SEO({ title, description, image, url }) {
       {/* -- Primary Meta Tags -- */}
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
+      <meta name="robots" content="index, follow" />
 
       {/* -- Open Graph / Facebook Tags -- */}
       <meta property="og:type" content="website" />

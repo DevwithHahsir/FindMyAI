@@ -1,23 +1,27 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import SEO from "../seo/SEO";
+import StructuredData from "../seo/StructuredData";
 import "./MasteringPrompts.css";
 
 const MasteringPrompts = () => {
   return (
     <div className="prompts-container">
-      <Helmet>
-        <title>
-          Mastering Prompts | Effective Prompt Engineering Guide | FindMyAI
-        </title>
-        <meta
-          name="description"
-          content="Learn prompt engineering techniques to get better results from AI tools. Comprehensive guide with examples, templates, and best practices."
-        />
-        <meta
-          name="keywords"
-          content="prompt engineering, AI prompts, effective prompts, prompt templates, prompt examples, ChatGPT prompts"
-        />
-      </Helmet>
+      <SEO
+        title="Prompt Engineering Guide | FindMyAI"
+        description="Learn prompt engineering techniques to get better results from AI tools. Comprehensive guide with examples, templates, and best practices."
+        url="https://findmyai.org/mastering-prompts"
+      />
+
+      <StructuredData
+        type="article"
+        data={{
+          title: "Prompt Engineering Guide",
+          description:
+            "Learn prompt engineering techniques to get better results from AI tools. Comprehensive guide with examples, templates, and best practices.",
+          url: "https://findmyai.org/mastering-prompts",
+        }}
+      />
 
       <div className="prompts-header">
         <h1>Mastering Prompts: A Comprehensive Guide</h1>
@@ -477,11 +481,136 @@ const MasteringPrompts = () => {
           to achieve better results.
         </p>
         <p>
-          Explore our <a href="/">AI tools directory</a> to find tools where you
-          can practice your prompt engineering skills, and visit our{" "}
-          <a href="/how-to-use-ai">How to Use AI guide</a> for more tips on
+          Explore our <Link to="/">AI tools directory</Link> to find tools where
+          you can practice your prompt engineering skills, and visit our{" "}
+          <Link to="/how-to-use-ai">How to Use AI guide</Link> for more tips on
           integrating AI tools into your workflow.
         </p>
+      </div>
+
+      {/* Practice Tools Section */}
+      <div className="prompts-section" style={{ marginTop: "40px" }}>
+        <h2>Practice Your Prompting Skills</h2>
+        <p>
+          Start practicing with these popular AI tools that respond well to
+          prompt engineering:
+        </p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "15px",
+            marginTop: "20px",
+          }}
+        >
+          <Link
+            to="/category/3"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "20px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+            }}
+          >
+            <strong>Text Generation Tools</strong>
+            <div
+              style={{ fontSize: "14px", color: "#8892b0", marginTop: "8px" }}
+            >
+              Practice with ChatGPT, Claude, and other writing assistants →
+            </div>
+          </Link>
+          <Link
+            to="/category/2"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "20px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+            }}
+          >
+            <strong>Image Generation</strong>
+            <div
+              style={{ fontSize: "14px", color: "#8892b0", marginTop: "8px" }}
+            >
+              Master DALL-E, Midjourney, and Stable Diffusion prompts →
+            </div>
+          </Link>
+          <Link
+            to="/category/1"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "20px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+            }}
+          >
+            <strong>Code Generation</strong>
+            <div
+              style={{ fontSize: "14px", color: "#8892b0", marginTop: "8px" }}
+            >
+              Improve coding prompts with GitHub Copilot and more →
+            </div>
+          </Link>
+          <Link
+            to="/category/4"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "20px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+            }}
+          >
+            <strong>Video Creation</strong>
+            <div
+              style={{ fontSize: "14px", color: "#8892b0", marginTop: "8px" }}
+            >
+              Learn video prompt techniques and tools →
+            </div>
+          </Link>
+        </div>
+
+        <div style={{ marginTop: "30px", textAlign: "center" }}>
+          <Link
+            to="/how-to-use-ai"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "15px 30px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "inline-block",
+              border: "1px solid #2d3748",
+              fontSize: "16px",
+              marginRight: "15px",
+            }}
+          >
+            <strong>← Back: How to Use AI</strong>
+          </Link>
+          <Link
+            to="/"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "15px 30px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "inline-block",
+              border: "1px solid #2d3748",
+              fontSize: "16px",
+            }}
+          >
+            <strong>Explore All Tools →</strong>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -1,21 +1,27 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import SEO from "../seo/SEO";
+import StructuredData from "../seo/StructuredData";
 import "./HowToUseAI.css";
 
 const HowToUseAI = () => {
   return (
     <div className="howto-container">
-      <Helmet>
-        <title>How to Use AI Tools Effectively | FindMyAI</title>
-        <meta
-          name="description"
-          content="Learn how to effectively use AI tools for your work and personal tasks. Beginner-friendly guides on getting started with artificial intelligence."
-        />
-        <meta
-          name="keywords"
-          content="how to use AI, AI tools guide, artificial intelligence beginners, AI tutorial, getting started with AI"
-        />
-      </Helmet>
+      <SEO
+        title="How to Use AI Tools Effectively | FindMyAI"
+        description="Learn how to effectively use AI tools for your work and personal tasks. Beginner-friendly guides on getting started with artificial intelligence."
+        url="https://findmyai.org/how-to-use-ai"
+      />
+
+      <StructuredData
+        type="article"
+        data={{
+          title: "How to Use AI Tools Effectively",
+          description:
+            "Learn how to effectively use AI tools for your work and personal tasks. Beginner-friendly guides on getting started with artificial intelligence.",
+          url: "https://findmyai.org/how-to-use-ai",
+        }}
+      />
 
       <div className="howto-header">
         <h1>How to Use AI Tools Effectively</h1>
@@ -302,9 +308,155 @@ const HowToUseAI = () => {
         </p>
         <p>
           Ready to find the perfect AI tools for your needs? Browse our{" "}
-          <a href="/">directory</a> to discover options tailored to your
+          <Link to="/">directory</Link> to discover options tailored to your
           specific requirements.
         </p>
+      </div>
+
+      {/* Explore Categories Section */}
+      <div className="howto-section" style={{ marginTop: "40px" }}>
+        <h2>Explore AI Tools by Category</h2>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "15px",
+            marginTop: "20px",
+          }}
+        >
+          <Link
+            to="/category/1"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "15px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+              textAlign: "center",
+            }}
+          >
+            <strong>Coding Tools</strong>
+            <div
+              style={{ fontSize: "12px", color: "#8892b0", marginTop: "5px" }}
+            >
+              Development & Programming →
+            </div>
+          </Link>
+          <Link
+            to="/category/2"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "15px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+              textAlign: "center",
+            }}
+          >
+            <strong>Image Generation</strong>
+            <div
+              style={{ fontSize: "12px", color: "#8892b0", marginTop: "5px" }}
+            >
+              AI Art & Graphics →
+            </div>
+          </Link>
+          <Link
+            to="/category/3"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "15px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+              textAlign: "center",
+            }}
+          >
+            <strong>Writing Tools</strong>
+            <div
+              style={{ fontSize: "12px", color: "#8892b0", marginTop: "5px" }}
+            >
+              Content & Copywriting →
+            </div>
+          </Link>
+          <Link
+            to="/category/4"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "15px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+              textAlign: "center",
+            }}
+          >
+            <strong>Video Tools</strong>
+            <div
+              style={{ fontSize: "12px", color: "#8892b0", marginTop: "5px" }}
+            >
+              Video Creation & Editing →
+            </div>
+          </Link>
+          <Link
+            to="/category/6"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "15px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+              textAlign: "center",
+            }}
+          >
+            <strong>Productivity</strong>
+            <div
+              style={{ fontSize: "12px", color: "#8892b0", marginTop: "5px" }}
+            >
+              Workflow & Automation →
+            </div>
+          </Link>
+          <Link
+            to="/category/7"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "15px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "block",
+              textAlign: "center",
+            }}
+          >
+            <strong>Business Tools</strong>
+            <div
+              style={{ fontSize: "12px", color: "#8892b0", marginTop: "5px" }}
+            >
+              Marketing & Sales →
+            </div>
+          </Link>
+        </div>
+
+        <div style={{ marginTop: "30px", textAlign: "center" }}>
+          <Link
+            to="/mastering-prompts"
+            style={{
+              color: "#64ffda",
+              textDecoration: "none",
+              padding: "15px 30px",
+              backgroundColor: "#1e2039",
+              borderRadius: "8px",
+              display: "inline-block",
+              border: "1px solid #2d3748",
+              fontSize: "16px",
+            }}
+          >
+            <strong>Next: Master AI Prompts →</strong>
+          </Link>
+        </div>
       </div>
     </div>
   );

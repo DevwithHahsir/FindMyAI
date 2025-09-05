@@ -79,30 +79,6 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname, activeItem]);
 
-  // Helper function to handle navigation to sections
-  const handleSectionClick = (sectionId, activeItemName) => {
-    if (location.pathname === "/") {
-      // If already on home page, just scroll to section
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-        setActiveItem(activeItemName);
-      }
-    } else {
-      // If on another page, navigate to home first, then scroll
-      setActiveItem(activeItemName);
-      navigate("/", { replace: true });
-
-      // Wait for navigation to complete, then scroll
-      setTimeout(() => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-  };
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       {/* Logo/Brand */}
@@ -139,38 +115,58 @@ function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <button
-              type="button"
-              className={`nav-link btn btn-link ${
+            <a
+              className={`nav-link ${
                 activeItem === "categories" ? "active" : ""
               }`}
-              onClick={() =>
-                handleSectionClick("categories-section", "categories")
+              href={
+                location.pathname === "/"
+                  ? "#categories-section"
+                  : "/#categories-section"
               }
-              style={{
-                border: "none",
-                background: "none",
-                textDecoration: "none",
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  document
+                    .getElementById("categories-section")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                  setActiveItem("categories");
+                } else {
+                  // Navigate to homepage with categories hash
+                  navigate("/#categories-section");
+                  setActiveItem("categories");
+                }
               }}
             >
               Categories
-            </button>
+            </a>
           </li>
           <li className="nav-item">
-            <button
-              type="button"
-              className={`nav-link btn btn-link ${
+            <a
+              className={`nav-link ${
                 activeItem === "trending" ? "active" : ""
               }`}
-              onClick={() => handleSectionClick("trending-section", "trending")}
-              style={{
-                border: "none",
-                background: "none",
-                textDecoration: "none",
+              href={
+                location.pathname === "/"
+                  ? "#trending-section"
+                  : "/#trending-section"
+              }
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  document
+                    .getElementById("trending-section")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                  setActiveItem("trending");
+                } else {
+                  // Navigate to homepage with trending hash
+                  navigate("/#trending-section");
+                  setActiveItem("trending");
+                }
               }}
             >
               Trending
-            </button>
+            </a>
           </li>
           <li className="nav-item">
             <Link

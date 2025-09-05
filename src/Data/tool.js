@@ -76,7 +76,7 @@ const Tools = [
     ],
     plans: [
       {
-        name: "Free for Students/OSS",
+        name: "Free for Students and OSS",
 
         functionalities: [
           "Free for verified students, teachers, and maintainers of popular open-source projects.",

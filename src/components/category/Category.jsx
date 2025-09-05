@@ -122,18 +122,18 @@ function Category() {
     <div className="category-wrapper">
       <div className="seo">
         <SEO
-          title="FindMyAI – Discover Top AI Tools (Free & Paid) | Best AI Tools Directory 2025"
+          title="Best AI Tools Directory 2025 | FindMyAI"
           description="Discover top AI tools in 2025 with FindMyAI. Browse free & paid tools by category to boost productivity, creativity, and growth.
 "
-          url="https://ai-directory.web.app"
+          url="https://findmyai.org"
         />
       </div>
 
       <main className="category-main-container">
         <section className="category-heading-container">
-          <h3>
+          <h2>
             BROWSE BY <span>CATEGORIES</span>
-          </h3>
+          </h2>
           <p>
             Explore our carefully curated collection of tools organized by
             category. Find exactly what you need for your workflow.

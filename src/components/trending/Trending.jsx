@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import "./trending.css";
 import SEO from "../seo/SEO";
+import { cleanToolName, createToolSlug } from "../../utils/urlUtils";
 import { Link } from "react-router-dom";
 import {
   LuBrainCircuit,
@@ -56,7 +58,24 @@ import {
   TbVideo,
   TbMusic,
   TbSchool,
+  TbBrandOpenai,
+  TbBrandGithub,
+  TbBrandAdobe,
+  TbBrandFigma,
+  TbBrandGoogle,
 } from "react-icons/tb";
+import {
+  SiOpenai,
+  SiGithub,
+  SiAdobe,
+  SiFigma,
+  SiCanva,
+  SiNotion,
+  SiSlack,
+  SiDiscord,
+  SiSpotify,
+  SiNetflix,
+} from "react-icons/si";
 
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
@@ -65,11 +84,42 @@ import { db } from "../../firebaseConfig/firebase";
 function Trending() {
   const [trendingTools, setTrendingTools] = useState([]);
 
-  // Function to get color based on icon prefix
-  const getIconColor = (iconName) => {
-    if (!iconName) return "#4F46E5"; // Default purple color
+  // Function to get color based on tool name or icon
+  const getIconColor = (toolName, iconName) => {
+    // Brand-specific colors
+    const brandColors = {
+      ChatGPT: "#00A67E",
+      OpenAI: "#00A67E",
+      Claude: "#D2691E",
+      Anthropic: "#D2691E",
+      GitHub: "#181717",
+      Midjourney: "#4B0082",
+      "DALL-E": "#00A67E",
+      "DALL·E": "#00A67E",
+      "Stable Diffusion": "#FF6B6B",
+      Adobe: "#FF0000",
+      Figma: "#F24E1E",
+      Canva: "#00C4CC",
+      Microsoft: "#00BCF2",
+      Google: "#4285F4",
+      Notion: "#000000",
+      Slack: "#4A154B",
+      Discord: "#5865F2",
+      Spotify: "#1DB954",
+      Netflix: "#E50914",
+    };
 
-    // Color mapping based on icon library prefixes
+    // Check for brand-specific colors first
+    if (toolName) {
+      const foundBrand = Object.keys(brandColors).find((brand) =>
+        toolName.toLowerCase().includes(brand.toLowerCase())
+      );
+      if (foundBrand) return brandColors[foundBrand];
+    }
+
+    // Fallback to icon prefix colors
+    if (!iconName) return "#4F46E5";
+    if (iconName.startsWith("Si")) return "#6366F1"; // Brand icons - Indigo
     if (iconName.startsWith("Lu")) return "#4F46E5"; // Purple for Lu icons
     if (iconName.startsWith("Bi")) return "#10B981"; // Green for Bi icons
     if (iconName.startsWith("Ci")) return "#F59E42"; // Orange for Ci icons
@@ -82,8 +132,116 @@ function Trending() {
   };
 
   // Function to map icon name string to the actual icon component
-  const getIconComponent = (iconName) => {
+  const getIconComponent = (toolName, iconName) => {
+    // Brand-specific icon mapping
+    const brandIcons = {
+      ChatGPT: SiOpenai,
+      OpenAI: SiOpenai,
+      Claude: TbBrain, // Using alternative icon
+      Anthropic: TbBrain, // Using alternative icon
+      GitHub: SiGithub,
+      Midjourney: LuImage, // Using alternative icon
+      "DALL-E": SiOpenai,
+      "DALL·E": SiOpenai,
+      "Stable Diffusion": LuImage, // Using alternative icon
+      Adobe: SiAdobe,
+      Figma: SiFigma,
+      Canva: SiCanva,
+      Microsoft: FiCpu, // Using alternative icon
+      Google: TbBrandGoogle,
+      Notion: SiNotion,
+      Slack: SiSlack,
+      Discord: SiDiscord,
+      Spotify: SiSpotify,
+      Netflix: SiNetflix,
+    };
+
+    // Check for brand-specific icons first
+    if (toolName) {
+      const foundBrand = Object.keys(brandIcons).find((brand) =>
+        toolName.toLowerCase().includes(brand.toLowerCase())
+      );
+      if (foundBrand) return brandIcons[foundBrand];
+    }
+
+    // Category-based fallback icons if no brand match
+    if (toolName) {
+      const toolLower = toolName.toLowerCase();
+      // AI/Chat tools
+      if (
+        toolLower.includes("gpt") ||
+        toolLower.includes("ai") ||
+        toolLower.includes("chat") ||
+        toolLower.includes("bot")
+      ) {
+        return TbBrain;
+      }
+      // Code tools
+      if (
+        toolLower.includes("code") ||
+        toolLower.includes("git") ||
+        toolLower.includes("ide") ||
+        toolLower.includes("editor")
+      ) {
+        return LuCode;
+      }
+      // Design tools
+      if (
+        toolLower.includes("design") ||
+        toolLower.includes("canvas") ||
+        toolLower.includes("draw") ||
+        toolLower.includes("sketch")
+      ) {
+        return TbPhoto;
+      }
+      // Image generation
+      if (
+        toolLower.includes("image") ||
+        toolLower.includes("photo") ||
+        toolLower.includes("picture") ||
+        toolLower.includes("art")
+      ) {
+        return LuImage;
+      }
+      // Video tools
+      if (
+        toolLower.includes("video") ||
+        toolLower.includes("movie") ||
+        toolLower.includes("film")
+      ) {
+        return LuVideo;
+      }
+      // Music/Audio tools
+      if (
+        toolLower.includes("music") ||
+        toolLower.includes("audio") ||
+        toolLower.includes("sound")
+      ) {
+        return LuMusic;
+      }
+      // Writing tools
+      if (
+        toolLower.includes("write") ||
+        toolLower.includes("text") ||
+        toolLower.includes("document")
+      ) {
+        return TbWriting;
+      }
+    }
+
+    // Fallback to general icon mapping
     const iconMap = {
+      // Brand icons
+      SiOpenai,
+      SiGithub,
+      SiAdobe,
+      SiFigma,
+      SiCanva,
+      SiNotion,
+      SiSlack,
+      SiDiscord,
+      SiSpotify,
+      SiNetflix,
       // LU icons
       LuBrainCircuit,
       LuCode,
@@ -131,9 +289,14 @@ function Trending() {
       TbVideo,
       TbMusic,
       TbSchool,
+      TbBrandOpenai,
+      TbBrandGithub,
+      TbBrandAdobe,
+      TbBrandFigma,
+      TbBrandGoogle,
     };
 
-    return iconMap[iconName] || LuBrainCircuit; // Default to LuBrainCircuit if not found
+    return iconMap[iconName] || TbBrain; // Default to TbBrain for AI tools
   };
 
   useEffect(() => {
@@ -164,19 +327,18 @@ function Trending() {
   return (
     <>
       <SEO
-        title="Trending AI Tools 2025 – Best Free & Paid AI Apps, Software & Directory | FindMyAI
-"
+        title="Trending AI Tools 2025 | FindMyAI"
         description="Explore the top trending AI tools of 2025 with FindMyAI – your ultimate AI tools directory. Compare free & paid AI apps, software, and platforms for productivity, startups, content creation, and business growth. Discover the best AI software people trust in 2025.
 "
-        url="https://ai-directory.web.app"
+        url="https://findmyai.org"
       />
 
       <main className="trending-section-main-container">
         <section className="trending-headings">
           <section className="category-heading-container">
-            <h3>
+            <h2>
               FEATURED <span>TOOLS</span>
-            </h3>
+            </h2>
             <p>
               Discover the most popular and trending tools in our collection
             </p>
@@ -190,13 +352,16 @@ function Trending() {
                 <section className="heading-icon">
                   <div
                     className="icon"
-                    style={{ color: getIconColor(tool.iconName) }}
+                    style={{ color: getIconColor(tool.name, tool.iconName) }}
                   >
-                    {/* Use the icon mapping function to get the proper icon with color */}
-                    {React.createElement(getIconComponent(tool.iconName), {
-                      color: getIconColor(tool.iconName),
-                      size: 24,
-                    })}
+                    {/* Use the enhanced icon mapping function with brand recognition */}
+                    {React.createElement(
+                      getIconComponent(tool.name, tool.iconName),
+                      {
+                        color: getIconColor(tool.name, tool.iconName),
+                        size: 24,
+                      }
+                    )}
                   </div>
                   <div className="trending-heading-container">
                     <div className="trending-heading">{tool.name}</div>
@@ -244,7 +409,7 @@ function Trending() {
                   visit
                 </a>
                 <Link
-                  to={`/tool/${encodeURIComponent(tool.name)}`}
+                  to={`/tool/${createToolSlug(cleanToolName(tool.name))}`}
                   className="browse-btn"
                   title="View detailed information about this tool"
                 >

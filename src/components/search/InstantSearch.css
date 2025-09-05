@@ -258,11 +258,6 @@
     margin: 0 2px;
 }
 
-
-kbd
-{
-    color: black !;
-}
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .instant-search-container {

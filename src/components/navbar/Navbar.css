@@ -29,6 +29,17 @@
   z-index: 9999 !important;
 }
 
+
+
+
+.navbar-collapse {
+
+  /* margin-left: 20rem !important; */
+}
+
+
+
+
 .navbar-brand h2 {
   font-size: 2vw !important;
   background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
@@ -38,40 +49,11 @@
   -webkit-text-fill-color: transparent;
   font-size: 48px;
   font-weight: bold;
-}
+  font-family: 'Bebas Neue', cursive !important;
+  font-weight: 400;
+  font-style: normal;
 
-/* Button nav-links to look like regular nav-links */
-.nav-link.btn.btn-link {
-  color: #A8A99E !important;
-  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x) !important;
-  font-weight: 500 !important;
-  text-decoration: none !important;
-  border: none !important;
-  background: none !important;
-  border-radius: 0 !important;
-  font-family: Georgia, 'Times New Roman', Times, serif !important;
-  transition: color 0.3s ease !important;
-}
 
-.nav-link.btn.btn-link:hover {
-  color: #7C5DFE !important;
-}
-
-.nav-link.btn.btn-link.active {
-  color: #7C5DFE !important;
-  font-weight: 600 !important;
-  position: relative;
-}
-
-.nav-link.btn.btn-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
-  border-radius: 2px;
 }
 
 .navbar-toggler {
@@ -89,7 +71,7 @@
   content: '';
   position: absolute;
   bottom: -3px;
-  left: 0;
+  left:0;
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
@@ -99,7 +81,7 @@
 .nav-link {
   font-weight: 500;
   transition: color 0.3s ease;
-  margin-right: 1rem;
+
   -webkit-transition: color 0.3s ease;
   -moz-transition: color 0.3s ease;
   -ms-transition: color 0.3s ease;

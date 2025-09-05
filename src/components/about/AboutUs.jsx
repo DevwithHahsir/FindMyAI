@@ -1,22 +1,32 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import SEO from "../seo/SEO";
+import StructuredData from "../seo/StructuredData";
 import "./AboutUs.css";
 import devProfilePic from "./pfp.webp";
 
 const AboutUs = () => {
   return (
     <div className="about-container">
-      <Helmet>
-        <title>About Us | FindMyAI - Your AI Tools Directory</title>
-        <meta
-          name="description"
-          content="Learn about the FindMyAI team, our mission, and how we're helping people discover and use the best AI tools for their needs."
-        />
-        <meta
-          name="keywords"
-          content="about FindMyAI, AI directory team, AI tools mission, AI discovery platform"
-        />
-      </Helmet>
+      <SEO
+        title="About Us | FindMyAI"
+        description="Learn about the FindMyAI team, our mission, and how we're helping people discover and use the best AI tools for their needs."
+        url="https://findmyai.org/about"
+      />
+
+      <StructuredData
+        type="breadcrumb"
+        data={[
+          {
+            name: "Home",
+            url: "https://findmyai.org/",
+          },
+          {
+            name: "About Us",
+            url: "https://findmyai.org/about",
+          },
+        ]}
+      />
 
       <div className="about-content">
         <div className="about-header">
@@ -137,7 +147,8 @@ const AboutUs = () => {
           <p>
             Have suggestions for how we can improve? Found a great AI tool
             that's not in our directory? We'd love to hear from you! Visit our{" "}
-            <a href="/contact">Contact page</a> to get in touch with our team.
+            <Link to="/contact">Contact page</Link> to get in touch with our
+            team.
           </p>
         </div>
 
@@ -206,6 +217,97 @@ const AboutUs = () => {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Start Exploring Section */}
+        <div
+          className="about-section"
+          style={{ marginTop: "50px", textAlign: "center" }}
+        >
+          <h2>Ready to Get Started?</h2>
+          <p>Explore our comprehensive collection of AI tools and resources:</p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "15px",
+              marginTop: "30px",
+            }}
+          >
+            <Link
+              to="/"
+              style={{
+                color: "#64ffda",
+                textDecoration: "none",
+                padding: "20px",
+                backgroundColor: "#1e2039",
+                borderRadius: "8px",
+                display: "block",
+              }}
+            >
+              <strong>Browse All Tools</strong>
+              <div
+                style={{ fontSize: "14px", color: "#8892b0", marginTop: "8px" }}
+              >
+                2000+ AI tools to explore →
+              </div>
+            </Link>
+            <Link
+              to="/how-to-use-ai"
+              style={{
+                color: "#64ffda",
+                textDecoration: "none",
+                padding: "20px",
+                backgroundColor: "#1e2039",
+                borderRadius: "8px",
+                display: "block",
+              }}
+            >
+              <strong>Learn How to Use AI</strong>
+              <div
+                style={{ fontSize: "14px", color: "#8892b0", marginTop: "8px" }}
+              >
+                Beginner-friendly guides →
+              </div>
+            </Link>
+            <Link
+              to="/mastering-prompts"
+              style={{
+                color: "#64ffda",
+                textDecoration: "none",
+                padding: "20px",
+                backgroundColor: "#1e2039",
+                borderRadius: "8px",
+                display: "block",
+              }}
+            >
+              <strong>Master Prompting</strong>
+              <div
+                style={{ fontSize: "14px", color: "#8892b0", marginTop: "8px" }}
+              >
+                Improve your AI results →
+              </div>
+            </Link>
+          </div>
+
+          <div style={{ marginTop: "30px" }}>
+            <Link
+              to="/contact"
+              style={{
+                color: "#64ffda",
+                textDecoration: "none",
+                padding: "15px 30px",
+                backgroundColor: "#1e2039",
+                borderRadius: "8px",
+                display: "inline-block",
+                border: "1px solid #2d3748",
+                fontSize: "16px",
+              }}
+            >
+              <strong>Get in Touch →</strong>
+            </Link>
           </div>
         </div>
       </div>

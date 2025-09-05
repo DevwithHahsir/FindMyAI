@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Tools from "../../Data/tool";
 import Categories from "../../Data/category";
+import { cleanToolName, createToolSlug } from "../../utils/urlUtils";
 import "./InstantSearch.css";
 
 const InstantSearch = ({ onClose }) => {
@@ -88,11 +89,8 @@ const InstantSearch = ({ onClose }) => {
       // Tool selected
       const toolIndex = index - totalCategories;
       const tool = searchResults.tools[toolIndex];
-      // Use tool name as URL slug since there's no id field
-      const toolSlug = tool.name
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/(^-|-$)/g, "");
+      // Use cleaned tool name for consistent URL format
+      const toolSlug = createToolSlug(cleanToolName(tool.name));
       navigate(`/tool/${toolSlug}`);
     }
 
@@ -182,10 +180,7 @@ const InstantSearch = ({ onClose }) => {
                 </div>
                 {searchResults.tools.map((tool, index) => {
                   const resultIndex = searchResults.categories.length + index;
-                  const toolSlug = tool.name
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]+/g, "-")
-                    .replace(/(^-|-$)/g, "");
+                  const toolSlug = createToolSlug(cleanToolName(tool.name));
                   return (
                     <Link
                       key={`tool-${index}`}
