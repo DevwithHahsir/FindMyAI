@@ -144,7 +144,7 @@ const AboutUs = () => {
               <img
                 src={devProfilePic}
                 alt="Developer"
-                loading="lazy"
+                loading="lazy" 
                 width="300"
                 height="400"
               />
