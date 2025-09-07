@@ -127,8 +127,9 @@ const createToolSlug = (toolName) => {
     // Convert stream to string
     const data = await streamToPromise(sitemap);
 
-    // Save inside dist folder after build
-    const filePath = path.join(__dirname, "../dist", "sitemap.xml");
+    // Save to both public and dist folders
+    const publicFilePath = path.join(__dirname, "../public", "sitemap.xml");
+    const distFilePath = path.join(__dirname, "../dist", "sitemap.xml");
 
     // Format the XML with proper indentation for readability
     const prettyXml = data
@@ -137,10 +138,19 @@ const createToolSlug = (toolName) => {
       .replace(/<urlset/g, "\n<urlset")
       .replace(/<\/urlset>/g, "\n</urlset>");
 
-    // Write the file with proper stream handling
-    const writeStream = createWriteStream(filePath);
-    writeStream.write(prettyXml);
-    writeStream.end();
+    // Write to public folder (for development)
+    const publicWriteStream = createWriteStream(publicFilePath);
+    publicWriteStream.write(prettyXml);
+    publicWriteStream.end();
+
+    // Write to dist folder (for production) - only if it exists
+    try {
+      const distWriteStream = createWriteStream(distFilePath);
+      distWriteStream.write(prettyXml);
+      distWriteStream.end();
+    } catch (_err) {
+      // Dist folder might not exist yet
+    }
 
     // Sitemap generated successfully
   } catch (_err) {

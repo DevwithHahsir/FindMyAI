@@ -5,7 +5,6 @@ import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig/firebase";
 import "./toolDetail.css";
 import SEO from "../seo/SEO";
-import StructuredData from "../seo/StructuredData";
 import { cleanToolName, createToolSlug } from "../../utils/urlUtils";
 import { LuBrain } from "react-icons/lu";
 import { CiLink } from "react-icons/ci";
@@ -97,7 +96,7 @@ function ToolDetail() {
   if (!tool) {
     return (
       <div className="error-container">
-        <h1>Tool Not Found</h1>
+        <h2>Tool Not Found</h2>
         <p>
           The requested tool "{decodedName}" could not be found. Please check
           the URL and try again.
@@ -142,7 +141,9 @@ function ToolDetail() {
   return (
     <main className="ToolDetal-main-container">
       <SEO
-        title={`${safeString(currentTool.name)} | FindMyAI`}
+        title={`${safeString(currentTool.name)} – Best ${safeString(
+          currentTool.category
+        )} AI Tool ${new Date().getFullYear()} | FindMyAI`}
         description={`Discover ${safeString(
           currentTool.name
         )}, one of the top ${safeString(
@@ -153,41 +154,6 @@ function ToolDetail() {
         url={`https://findmyai.org/tool/${createToolSlug(
           cleanToolName(safeString(currentTool.name))
         )}`}
-      />
-
-      <StructuredData
-        type="tool-product-faq"
-        data={{
-          name: safeString(currentTool.name),
-          description: safeString(currentTool.description),
-          websiteUrl: currentTool.websiteUrl,
-          category: safeString(currentTool.category),
-          pricingModel: safeString(currentTool.pricingModel),
-        }}
-      />
-
-      <StructuredData
-        type="breadcrumb"
-        data={[
-          {
-            name: "Home",
-            url: "https://findmyai.org/",
-          },
-          {
-            name: "AI Tools",
-            url: "https://findmyai.org/",
-          },
-          {
-            name: safeString(currentTool.category),
-            url: `https://findmyai.org/category/${currentTool.categoryId}`,
-          },
-          {
-            name: safeString(currentTool.name),
-            url: `https://findmyai.org/tool/${createToolSlug(
-              cleanToolName(safeString(currentTool.name))
-            )}`,
-          },
-        ]}
       />
 
       <section className="back-btn">
@@ -215,7 +181,17 @@ function ToolDetail() {
           </Link>
           <span>{">"}</span>
           <Link
-            to="/#categories-section"
+            to="/"
+            onClick={() => {
+              // Navigate to home and then scroll to categories section
+              setTimeout(() => {
+                const categoriesSection =
+                  document.getElementById("categories-section");
+                if (categoriesSection) {
+                  categoriesSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }, 100);
+            }}
             style={{ color: "#64ffda", textDecoration: "none" }}
           >
             Categories
@@ -248,7 +224,7 @@ function ToolDetail() {
                 <LuBrain />
               </div>
               <div className="headin-container">
-                <h1>{safeString(currentTool.name, "Tool")}</h1>
+                <h2>{safeString(currentTool.name, "Tool")}</h2>
                 <div className="sub-category">
                   {currentTool.category && (
                     <p>{safeString(currentTool.category)}</p>
@@ -307,150 +283,10 @@ function ToolDetail() {
               </div>
             </div>
 
-            {/* Enhanced Description Container */}
-            <div
-              className="detail-description-container"
-              style={{
-                marginTop: "30px",
-                padding: "25px",
-                backgroundColor: "#1e2039",
-                borderRadius: "8px",
-                border: "1px solid #2d3748",
-              }}
-            >
-              <h3>About {safeString(currentTool.name)}</h3>
-              <p style={{ lineHeight: "1.6", marginBottom: "20px" }}>
-                {currentTool.description ||
-                  `${safeString(
-                    currentTool.name
-                  )} is a cutting-edge AI tool designed to revolutionize how professionals approach ${safeString(
-                    currentTool.category
-                  ).toLowerCase()} tasks. This innovative solution leverages advanced artificial intelligence algorithms to deliver exceptional results while streamlining workflows and enhancing productivity.`}
-              </p>
-
-              <div style={{ marginBottom: "25px" }}>
-                <h4 style={{ color: "#64ffda", marginBottom: "15px" }}>
-                  Key Capabilities
-                </h4>
-                <p style={{ lineHeight: "1.6", marginBottom: "15px" }}>
-                  As a leading {safeString(currentTool.category).toLowerCase()}{" "}
-                  AI tool, {safeString(currentTool.name)} offers powerful
-                  features that enable users to achieve professional-grade
-                  results efficiently. The platform combines intuitive design
-                  with sophisticated AI technology, making it accessible to both
-                  beginners and experienced professionals.
-                </p>
-                <p style={{ lineHeight: "1.6" }}>
-                  Whether you're working on personal projects or
-                  enterprise-level initiatives, {safeString(currentTool.name)}{" "}
-                  provides the flexibility and scalability needed to meet
-                  diverse requirements. Its{" "}
-                  {safeString(currentTool.pricingModel).toLowerCase()} pricing
-                  model ensures that users can find a plan that fits their
-                  budget and usage needs.
-                </p>
-              </div>
-
-              <div>
-                <h4 style={{ color: "#64ffda", marginBottom: "15px" }}>
-                  Why Choose {safeString(currentTool.name)}?
-                </h4>
-                <div style={{ display: "grid", gap: "12px" }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "10px",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color: "#64ffda",
-                        fontSize: "16px",
-                        marginTop: "2px",
-                      }}
-                    >
-                      ✓
-                    </div>
-                    <span>
-                      Advanced AI technology for superior results and efficiency
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "10px",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color: "#64ffda",
-                        fontSize: "16px",
-                        marginTop: "2px",
-                      }}
-                    >
-                      ✓
-                    </div>
-                    <span>
-                      User-friendly interface designed for professionals and
-                      beginners alike
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "10px",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color: "#64ffda",
-                        fontSize: "16px",
-                        marginTop: "2px",
-                      }}
-                    >
-                      ✓
-                    </div>
-                    <span>
-                      Flexible pricing options including{" "}
-                      {currentTool.plans &&
-                      currentTool.plans.some(
-                        (plan) =>
-                          plan.price === "$0" ||
-                          (typeof plan.name === "string" &&
-                            plan.name.toLowerCase().includes("free"))
-                      )
-                        ? "free tiers and "
-                        : ""}
-                      premium features
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "10px",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color: "#64ffda",
-                        fontSize: "16px",
-                        marginTop: "2px",
-                      }}
-                    >
-                      ✓
-                    </div>
-                    <span>
-                      Regular updates and improvements based on user feedback
-                      and AI advancements
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* <div className="deatil-container">
+              {currentTool.description ||
+                "No description available for this tool."}
+            </div> */}
           </section>
 
           {/* PLAN Container */}

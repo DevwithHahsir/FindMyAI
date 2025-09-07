@@ -28,3 +28,11 @@
         transform: rotate(360deg);
     }
 }
+
+/* Global cursor pointer for interactive elements */
+button,
+a,
+.nav-link,
+.navbar-brand {
+    cursor: pointer;
+}

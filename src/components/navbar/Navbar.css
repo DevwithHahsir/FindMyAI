@@ -52,12 +52,12 @@
   font-family: 'Bebas Neue', cursive !important;
   font-weight: 400;
   font-style: normal;
-
-
+  cursor: pointer;
 }
 
 .navbar-toggler {
   border: none;
+  cursor: pointer;
 }
 
 /* Enhanced styling for active nav links */
@@ -65,13 +65,14 @@
   color: #7C5DFE !important;
   font-weight: 600;
   position: relative;
+  cursor: pointer;
 }
 
 .nav-link.active::after {
   content: '';
   position: absolute;
   bottom: -3px;
-  left:0;
+  left: 0;
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
@@ -81,7 +82,7 @@
 .nav-link {
   font-weight: 500;
   transition: color 0.3s ease;
-
+  cursor: pointer;
   -webkit-transition: color 0.3s ease;
   -moz-transition: color 0.3s ease;
   -ms-transition: color 0.3s ease;
@@ -93,9 +94,9 @@
 
 
 li a {
-
   color: #A8A99E !important;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  cursor: pointer;
 }
 
 
@@ -134,6 +135,7 @@ li a {
   -o-border-radius: 0px 4px 4px 0px !important;
   background-color: #100E1B;
   border: none;
+  cursor: pointer;
 }
 
 .input-group button i {

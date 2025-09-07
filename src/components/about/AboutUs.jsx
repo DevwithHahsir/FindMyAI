@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SEO from "../seo/SEO";
-import StructuredData from "../seo/StructuredData";
 import "./AboutUs.css";
 import devProfilePic from "./pfp.webp";
 
@@ -9,23 +8,9 @@ const AboutUs = () => {
   return (
     <div className="about-container">
       <SEO
-        title="About Us | FindMyAI"
+        title="About Us | FindMyAI - Your AI Tools Directory"
         description="Learn about the FindMyAI team, our mission, and how we're helping people discover and use the best AI tools for their needs."
         url="https://findmyai.org/about"
-      />
-
-      <StructuredData
-        type="breadcrumb"
-        data={[
-          {
-            name: "Home",
-            url: "https://findmyai.org/",
-          },
-          {
-            name: "About Us",
-            url: "https://findmyai.org/about",
-          },
-        ]}
       />
 
       <div className="about-content">
@@ -161,7 +146,7 @@ const AboutUs = () => {
                 alt="Developer"
                 loading="lazy"
                 width="300"
-                height="300"
+                height="400"
               />
             </div>
             <div className="developer-info">

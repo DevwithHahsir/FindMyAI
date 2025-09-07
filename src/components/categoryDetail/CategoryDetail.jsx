@@ -5,7 +5,6 @@ import categoryData from "../../Data/category";
 import Tools from "../../Data/tool";
 import "./categoryDetail.css";
 import SEO from "../seo/SEO";
-import StructuredData from "../seo/StructuredData";
 import { cleanToolName, createToolSlug } from "../../utils/urlUtils";
 import { CiLink } from "react-icons/ci";
 import { IoEyeOutline, IoArrowBack } from "react-icons/io5";
@@ -212,7 +211,7 @@ export default function CategoryDetail() {
   if (!category) {
     return (
       <div className="error-container">
-        <h1>Category Not Found</h1>
+        <h2>Category Not Found</h2>
         <p>The requested category could not be found.</p>
         <p>Requested Category ID: {categoryId}</p>
         <p>Available Categories: {categoryData.map((c) => c.id).join(", ")}</p>
@@ -226,46 +225,11 @@ export default function CategoryDetail() {
   return (
     <main className="category-detail-container">
       <SEO
-        title={`${category.name} AI Tools | FindMyAI`}
+        title={`${category.name} AI Tools - FindMyAI | Best ${category.name} Tools 2025`}
         description={`Discover the best ${
           category.name
         } AI tools in 2025. Compare free & paid options for ${category.name.toLowerCase()} tasks and boost your productivity with FindMyAI's curated selection.`}
         url={`https://findmyai.org/category/${categoryId}`}
-      />
-
-      <StructuredData
-        type="category"
-        data={{
-          name: category.name,
-          description: category.description,
-          id: categoryId,
-          toolCount: tools.length,
-        }}
-      />
-
-      <StructuredData
-        type="breadcrumb"
-        data={[
-          {
-            name: "Home",
-            url: "https://findmyai.org/",
-          },
-          {
-            name: "Categories",
-            url: "https://findmyai.org/",
-          },
-          {
-            name: category.name,
-            url: `https://findmyai.org/category/${categoryId}`,
-          },
-        ]}
-      />
-
-      <StructuredData
-        type="category-faq"
-        data={{
-          categoryName: category.name,
-        }}
       />
 
       <div className="back-button-container">
@@ -288,13 +252,40 @@ export default function CategoryDetail() {
             fontSize: "14px",
           }}
         >
-          <Link to="/" style={{ color: "#64ffda", textDecoration: "none" }}>
+          <Link
+            to="/"
+            style={{
+              background:
+                "linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              textDecoration: "none",
+            }}
+          >
             Home
           </Link>
           <span>{">"}</span>
           <Link
-            to="/#categories-section"
-            style={{ color: "#64ffda", textDecoration: "none" }}
+            to="/"
+            onClick={() => {
+              // Navigate to home and then scroll to categories section
+              setTimeout(() => {
+                const categoriesSection =
+                  document.getElementById("categories-section");
+                if (categoriesSection) {
+                  categoriesSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }, 100);
+            }}
+            style={{
+              background:
+                "linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              textDecoration: "none",
+            }}
           >
             Categories
           </Link>
@@ -306,197 +297,12 @@ export default function CategoryDetail() {
       <section className="category-detail-header">
         <h1>{category.name}</h1>
         <p>{category.description}</p>
-
-        {/* Enhanced Category Introduction */}
-        <div
-          className="category-intro"
-          style={{
-            marginTop: "30px",
-            padding: "25px",
-            backgroundColor: "#1e2039",
-            borderRadius: "8px",
-            border: "1px solid #2d3748",
-          }}
-        >
-          <h3>About {category.name} AI Tools</h3>
-          <p style={{ lineHeight: "1.6", marginBottom: "15px" }}>
-            {category.name} AI tools have revolutionized how professionals and
-            enthusiasts approach tasks in this domain. These cutting-edge
-            solutions leverage artificial intelligence to streamline workflows,
-            enhance creativity, and deliver results that were previously
-            impossible or time-consuming to achieve manually.
-          </p>
-          <p style={{ lineHeight: "1.6", marginBottom: "15px" }}>
-            Our curated collection includes both free and premium{" "}
-            {category.name.toLowerCase()} tools, ranging from beginner-friendly
-            applications to advanced platforms used by industry professionals.
-            Each tool has been carefully evaluated for its functionality, user
-            experience, and value proposition to ensure you have access to the
-            best options available in {new Date().getFullYear()}.
-          </p>
-          <p style={{ lineHeight: "1.6" }}>
-            Whether you're a startup looking to optimize costs, a freelancer
-            seeking to enhance productivity, or an enterprise requiring scalable
-            solutions, you'll find tools that match your specific needs and
-            budget. Many of these tools offer free tiers or trial periods,
-            allowing you to test their capabilities before committing.
-          </p>
-        </div>
-
-        {/* Key Benefits Section */}
-        <div className="category-benefits" style={{ marginTop: "30px" }}>
-          <h3>Key Benefits of {category.name} AI Tools</h3>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-              gap: "20px",
-              marginTop: "20px",
-            }}
-          >
-            <div
-              style={{
-                padding: "20px",
-                backgroundColor: "#1e2039",
-                borderRadius: "8px",
-                border: "1px solid #2d3748",
-              }}
-            >
-              <h4 style={{ color: "#64ffda", marginBottom: "10px" }}>
-                Increased Efficiency
-              </h4>
-              <p style={{ fontSize: "14px", lineHeight: "1.5" }}>
-                Automate repetitive tasks and complete projects faster than
-                traditional methods, allowing you to focus on high-value
-                activities that require human creativity and judgment.
-              </p>
-            </div>
-            <div
-              style={{
-                padding: "20px",
-                backgroundColor: "#1e2039",
-                borderRadius: "8px",
-                border: "1px solid #2d3748",
-              }}
-            >
-              <h4 style={{ color: "#64ffda", marginBottom: "10px" }}>
-                Enhanced Quality
-              </h4>
-              <p style={{ fontSize: "14px", lineHeight: "1.5" }}>
-                Leverage AI algorithms trained on vast datasets to achieve
-                professional-grade results with consistency and precision that
-                surpasses manual approaches.
-              </p>
-            </div>
-            <div
-              style={{
-                padding: "20px",
-                backgroundColor: "#1e2039",
-                borderRadius: "8px",
-                border: "1px solid #2d3748",
-              }}
-            >
-              <h4 style={{ color: "#64ffda", marginBottom: "10px" }}>
-                Cost-Effective Solutions
-              </h4>
-              <p style={{ fontSize: "14px", lineHeight: "1.5" }}>
-                Access powerful capabilities without the need for expensive
-                software licenses or specialized expertise, making advanced
-                tools accessible to businesses of all sizes.
-              </p>
-            </div>
-          </div>
-        </div>
+        {/* <p className="category-info">
+          Found {tools.length} tools in category #{category.id}
+        </p> */}
       </section>
 
       <section className="category-tools-container">
-        {/* How to Choose Section */}
-        <div
-          className="how-to-choose"
-          style={{
-            marginBottom: "40px",
-            padding: "25px",
-            backgroundColor: "#1e2039",
-            borderRadius: "8px",
-            border: "1px solid #2d3748",
-          }}
-        >
-          <h3>How to Choose the Right {category.name} AI Tool</h3>
-          <p style={{ lineHeight: "1.6", marginBottom: "20px" }}>
-            Selecting the perfect {category.name.toLowerCase()} AI tool depends
-            on several factors including your specific use case, technical
-            requirements, budget constraints, and integration needs. Here's what
-            to consider:
-          </p>
-
-          <div style={{ display: "grid", gap: "15px" }}>
-            <div
-              style={{ display: "flex", gap: "15px", alignItems: "flex-start" }}
-            >
-              <div
-                style={{ color: "#64ffda", fontSize: "18px", marginTop: "2px" }}
-              >
-                •
-              </div>
-              <div>
-                <strong style={{ color: "#ccd6f6" }}>Define Your Goals:</strong>{" "}
-                Clearly identify what you want to achieve, whether it's
-                automating workflows, enhancing creativity, analyzing data, or
-                improving efficiency.
-              </div>
-            </div>
-            <div
-              style={{ display: "flex", gap: "15px", alignItems: "flex-start" }}
-            >
-              <div
-                style={{ color: "#64ffda", fontSize: "18px", marginTop: "2px" }}
-              >
-                •
-              </div>
-              <div>
-                <strong style={{ color: "#ccd6f6" }}>
-                  Consider Your Budget:
-                </strong>{" "}
-                Evaluate free tiers, subscription costs, and usage-based pricing
-                to find tools that fit your financial constraints while meeting
-                your needs.
-              </div>
-            </div>
-            <div
-              style={{ display: "flex", gap: "15px", alignItems: "flex-start" }}
-            >
-              <div
-                style={{ color: "#64ffda", fontSize: "18px", marginTop: "2px" }}
-              >
-                •
-              </div>
-              <div>
-                <strong style={{ color: "#ccd6f6" }}>
-                  Check Integration Options:
-                </strong>{" "}
-                Ensure the tool can integrate with your existing software stack
-                and workflow to maximize efficiency and minimize disruption.
-              </div>
-            </div>
-            <div
-              style={{ display: "flex", gap: "15px", alignItems: "flex-start" }}
-            >
-              <div
-                style={{ color: "#64ffda", fontSize: "18px", marginTop: "2px" }}
-              >
-                •
-              </div>
-              <div>
-                <strong style={{ color: "#ccd6f6" }}>
-                  Test Before Committing:
-                </strong>{" "}
-                Take advantage of free trials and demos to evaluate the tool's
-                performance with your specific use cases and data.
-              </div>
-            </div>
-          </div>
-        </div>
-
         <h2>
           Browse <span>{category.name}</span> Tools
         </h2>
@@ -613,7 +419,11 @@ export default function CategoryDetail() {
                 key={relatedCategory.id}
                 to={`/category/${relatedCategory.id}`}
                 style={{
-                  color: "#64ffda",
+                  background:
+                    "linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
                   textDecoration: "none",
                   padding: "15px",
                   backgroundColor: "#1e2039",
@@ -648,7 +458,11 @@ export default function CategoryDetail() {
           <Link
             to="/how-to-use-ai"
             style={{
-              color: "#64ffda",
+              background:
+                "linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
               textDecoration: "none",
               padding: "15px",
               backgroundColor: "#1e2039",
@@ -668,7 +482,11 @@ export default function CategoryDetail() {
           <Link
             to="/mastering-prompts"
             style={{
-              color: "#64ffda",
+              background:
+                "linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
               textDecoration: "none",
               padding: "15px",
               backgroundColor: "#1e2039",

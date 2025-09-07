@@ -2,7 +2,7 @@ import "./herosection.css";
 import { WiStars } from "react-icons/wi";
 import RotatingText from "../animations/RotatingText";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import React, { useEffect } from "react";
+import React from "react";
 import CountUp from "../animations/CountUp";
 import SEO from "../seo/SEO";
 import Category from "../category/Category";
@@ -20,32 +20,6 @@ function Herosection() {
       .getElementById("trending-section")
       .scrollIntoView({ behavior: "smooth" });
   };
-
-  // Handle hash navigation from external links
-  useEffect(() => {
-    const handleHashNavigation = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        setTimeout(() => {
-          const element = document.querySelector(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }, 100); // Small delay to ensure DOM is ready
-      }
-    };
-
-    // Handle initial load with hash
-    handleHashNavigation();
-
-    // Handle hash changes
-    window.addEventListener("hashchange", handleHashNavigation);
-
-    return () => {
-      window.removeEventListener("hashchange", handleHashNavigation);
-    };
-  }, []);
-
   // const categoriesSectionRef = useRef(null);
 
   return (
@@ -70,7 +44,7 @@ function Herosection() {
       {/* Hero Heading */}
       <header className="herosection-heading-container">
         {/* <div className="herosection-title">Find the perfect tools for every task</div> */}
-        <h1 className="herosection-title">
+        <div className="herosection-title">
           <span>Find the perfect</span>
           <RotatingText
             texts={["Tools", "Solution", "Working", "AI"]}
@@ -85,8 +59,8 @@ function Herosection() {
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
             rotationInterval={2000}
           />
-          <span>for every task</span>
-        </h1>
+        </div>
+        <div className="herosection-title">for every task</div>
 
         <div className="herosection-paragraph">
           Explore thousands of tools across coding, AI, design, and

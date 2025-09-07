@@ -72,8 +72,6 @@
     font-style: italic;
 }
 
-.category-tools-container {}
-
 .category-tools-container h2 {
     font-size: 1.8rem;
     margin-bottom: 20px;
@@ -98,19 +96,19 @@
 }
 
 .tool-card {
-    background-color: #ad79fc18;
-    backdrop-filter: blur(20px);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #181322;
+    border: 1px solid rgba(174, 121, 252, 0.3);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
-    width: 20rem;
+    width: 25rem;
 }
 
 .tool-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(174, 121, 252, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(174, 121, 252, 0.5);
 }
 
 .tool-header {
@@ -167,13 +165,15 @@
 }
 
 .free-tag {
-    background: rgba(72, 187, 120, 0.2);
-    color: #38a169;
+    background-color: #64CE8A;
+    color: white;
+    font-weight: 600;
 }
 
 .paid-tag {
-    background: rgba(237, 100, 166, 0.2);
-    color: #d53f8c;
+    background-color: #BF7A27;
+    color: white;
+    font-weight: 600;
     display: flex;
     align-items: center;
 }
@@ -222,8 +222,8 @@
 
 .details-button {
     background-color: transparent;
-    color: white;
-    border: 1px solid rgba(174, 121, 252, 0.3);
+    color: #A8A99E;
+    border: 1px solid #A8A99E;
 }
 
 .website-button:hover {
@@ -231,7 +231,8 @@
 }
 
 .details-button:hover {
-    background-color: rgba(174, 121, 252, 0.1);
+    background-color: #A8A99E;
+    color: black;
 }
 
 .loading-container {
@@ -362,7 +363,7 @@
     .tools-grid {
         grid-template-columns: 1fr;
     }
-    
+
 
     .tool-buttons {
         flex-direction: column;

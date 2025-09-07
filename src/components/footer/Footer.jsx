@@ -108,6 +108,32 @@ const Footer = () => {
           </div>
 
           <div className="footer-column">
+            <h3>Legal</h3>
+            <ul className="footer-links">
+              <li>
+                <Link to="/privacy-policy">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link to="/terms-conditions">Terms & Conditions</Link>
+              </li>
+              {/* <li>
+                <a href="/ads.txt" target="_blank" rel="noopener noreferrer">
+                  Ads.txt
+                </a>
+              </li> */}
+              {/* <li>
+                <a
+                  href="/sitemap.xml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Sitemap
+                </a>
+              </li> */}
+            </ul>
+          </div>
+
+          <div className="footer-column">
             <h3>Newsletter</h3>
             <p className="footer-description">
               Subscribe to our newsletter to receive updates on new AI tools,
@@ -137,6 +163,11 @@ const Footer = () => {
           <p>
             &copy; {new Date().getFullYear()} FindMyAI. All rights reserved.
           </p>
+          <div className="footer-bottom-links">
+            <Link to="/privacy-policy">Privacy</Link>
+            <span>•</span>
+            <Link to="/terms-conditions">Terms</Link>
+          </div>
         </div>
       </div>
     </footer>

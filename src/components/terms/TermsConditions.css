@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.terms-container {
+    background-color: #09090B;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.terms-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    line-height: 1.6;
+}
+
+.terms-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #1E1E3A;
+}
+
+.terms-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    background: linear-gradient(90deg, #4E43FF, #614DFE, #7C5DFE, #9269FD, #AE79FC);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.last-updated {
+    color: #8892b0;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.terms-section {
+    margin-bottom: 3rem;
+    padding: 1.5rem 0;
+}
+
+.terms-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.terms-section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #4E43FF, #7C5DFE);
+}
+
+.terms-section h3 {
+    font-size: 1.4rem;
+    color: #AE79FC;
+    margin: 2rem 0 1rem 0;
+    font-weight: 600;
+}
+
+.terms-section p {
+    color: #ccd6f6;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.terms-section ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.terms-section li {
+    color: #ccd6f6;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.terms-section li strong {
+    color: #AE79FC;
+}
+
+.contact-info {
+    background-color: #1E1E3A;
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 4px solid #7C5DFE;
+    margin: 1.5rem 0;
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+    color: #e6f1ff;
+}
+
+.contact-info strong {
+    color: #AE79FC;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .terms-content {
+        padding: 0 1rem;
+    }
+
+    .terms-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .terms-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .terms-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .contact-info {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .terms-header h1 {
+        font-size: 2rem;
+    }
+
+    .terms-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .terms-section {
+        margin-bottom: 2rem;
+    }
+}

@@ -58,6 +58,7 @@
     text-decoration: none;
     transition: color 0.3s ease;
     font-size: 0.95rem;
+    cursor: pointer;
 }
 
 .footer-links a:hover {
@@ -74,6 +75,7 @@
     color: #8e8e8e;
     font-size: 1.5rem;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .social-icon:hover {
@@ -86,10 +88,37 @@
     border-top: 1px solid #1E1E3A;
     color: #888;
     font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .footer-bottom p {
     margin: 0;
+}
+
+.footer-bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.footer-bottom-links a {
+    color: #8e8e8e;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.footer-bottom-links a:hover {
+    color: #7C5DFE;
+}
+
+.footer-bottom-links span {
+    color: #8e8e8e;
 }
 
 .footer-logo {

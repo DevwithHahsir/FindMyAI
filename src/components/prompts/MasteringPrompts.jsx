@@ -1,26 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SEO from "../seo/SEO";
-import StructuredData from "../seo/StructuredData";
 import "./MasteringPrompts.css";
 
 const MasteringPrompts = () => {
   return (
     <div className="prompts-container">
       <SEO
-        title="Prompt Engineering Guide | FindMyAI"
+        title="Mastering Prompts | Effective Prompt Engineering Guide | FindMyAI"
         description="Learn prompt engineering techniques to get better results from AI tools. Comprehensive guide with examples, templates, and best practices."
         url="https://findmyai.org/mastering-prompts"
-      />
-
-      <StructuredData
-        type="article"
-        data={{
-          title: "Prompt Engineering Guide",
-          description:
-            "Learn prompt engineering techniques to get better results from AI tools. Comprehensive guide with examples, templates, and best practices.",
-          url: "https://findmyai.org/mastering-prompts",
-        }}
       />
 
       <div className="prompts-header">

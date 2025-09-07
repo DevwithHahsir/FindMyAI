@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsFillMenuButtonFill } from "react-icons/bs";
+import { FindMyAILogo } from "../common/OptimizedImage";
 import InstantSearch from "../search/InstantSearch";
 import "./Navbar.css";
 
 function Navbar() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState("home");
 
   // Set active item based on current path
@@ -14,6 +14,27 @@ function Navbar() {
     // Initialize based on current path
     if (location.pathname === "/") {
       setActiveItem("home");
+
+      // Handle hash navigation on homepage
+      if (location.hash === "#categories-section") {
+        setActiveItem("categories");
+        // Scroll to section after a brief delay to ensure DOM is ready
+        setTimeout(() => {
+          const element = document.getElementById("categories-section");
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      } else if (location.hash === "#trending-section") {
+        setActiveItem("trending");
+        // Scroll to section after a brief delay to ensure DOM is ready
+        setTimeout(() => {
+          const element = document.getElementById("trending-section");
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      }
     } else if (location.pathname === "/about") {
       setActiveItem("about");
     } else if (location.pathname === "/contact") {
@@ -27,7 +48,7 @@ function Navbar() {
     } else if (location.pathname.startsWith("/category/")) {
       setActiveItem("categories");
     }
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   // Handle scrolling detection for categories and trending sections
   useEffect(() => {
@@ -83,7 +104,10 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       {/* Logo/Brand */}
       <Link className="navbar-brand" to="/">
-        <h2>FindMyAI</h2>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {/* <FindMyAILogo size="medium" loading="eager" fetchPriority="high" /> */}
+          <h2>FindMyAI</h2>
+        </div>
       </Link>
 
       {/* Toggle Button for Mobile */}
@@ -115,58 +139,62 @@ function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <a
-              className={`nav-link ${
-                activeItem === "categories" ? "active" : ""
-              }`}
-              href={
-                location.pathname === "/"
-                  ? "#categories-section"
-                  : "/#categories-section"
-              }
-              onClick={(e) => {
-                if (location.pathname === "/") {
+            {location.pathname === "/" ? (
+              <a
+                className={`nav-link ${
+                  activeItem === "categories" ? "active" : ""
+                }`}
+                href="#categories-section"
+                onClick={(e) => {
                   e.preventDefault();
                   document
                     .getElementById("categories-section")
-                    ?.scrollIntoView({ behavior: "smooth" });
+                    .scrollIntoView({ behavior: "smooth" });
                   setActiveItem("categories");
-                } else {
-                  // Navigate to homepage with categories hash
-                  navigate("/#categories-section");
-                  setActiveItem("categories");
-                }
-              }}
-            >
-              Categories
-            </a>
+                }}
+              >
+                Categories
+              </a>
+            ) : (
+              <Link
+                className={`nav-link ${
+                  activeItem === "categories" ? "active" : ""
+                }`}
+                to="/#categories-section"
+                onClick={() => setActiveItem("categories")}
+              >
+                Categories
+              </Link>
+            )}
           </li>
           <li className="nav-item">
-            <a
-              className={`nav-link ${
-                activeItem === "trending" ? "active" : ""
-              }`}
-              href={
-                location.pathname === "/"
-                  ? "#trending-section"
-                  : "/#trending-section"
-              }
-              onClick={(e) => {
-                if (location.pathname === "/") {
+            {location.pathname === "/" ? (
+              <a
+                className={`nav-link ${
+                  activeItem === "trending" ? "active" : ""
+                }`}
+                href="#trending-section"
+                onClick={(e) => {
                   e.preventDefault();
                   document
                     .getElementById("trending-section")
-                    ?.scrollIntoView({ behavior: "smooth" });
+                    .scrollIntoView({ behavior: "smooth" });
                   setActiveItem("trending");
-                } else {
-                  // Navigate to homepage with trending hash
-                  navigate("/#trending-section");
-                  setActiveItem("trending");
-                }
-              }}
-            >
-              Trending
-            </a>
+                }}
+              >
+                Trending
+              </a>
+            ) : (
+              <Link
+                className={`nav-link ${
+                  activeItem === "trending" ? "active" : ""
+                }`}
+                to="/#trending-section"
+                onClick={() => setActiveItem("trending")}
+              >
+                Trending
+              </Link>
+            )}
           </li>
           <li className="nav-item">
             <Link

@@ -22,6 +22,10 @@ const HowToUseAI = lazy(() => import("./components/howto/HowToUseAI"));
 const MasteringPrompts = lazy(() =>
   import("./components/prompts/MasteringPrompts")
 );
+const PrivacyPolicy = lazy(() => import("./components/privacy/PrivacyPolicy"));
+const TermsConditions = lazy(() =>
+  import("./components/terms/TermsConditions")
+);
 // import PostData from "./postData/PostData";
 
 function App() {
@@ -92,6 +96,26 @@ function App() {
               fallback={<div className="loading-container">Loading...</div>}
             >
               <MasteringPrompts />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/privacy-policy"
+          element={
+            <Suspense
+              fallback={<div className="loading-container">Loading...</div>}
+            >
+              <PrivacyPolicy />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/terms-conditions"
+          element={
+            <Suspense
+              fallback={<div className="loading-container">Loading...</div>}
+            >
+              <TermsConditions />
             </Suspense>
           }
         />
